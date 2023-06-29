@@ -1,0 +1,22 @@
+.card{
+    background-color: black;
+    display: inline-flex;
+    flex-direction: column;
+    color: red;
+    font-size: 20px;
+    margin: 10px 30px 30px 5px;
+    border-radius: 10px;
+    line-height: 0px;
+    overflow-wrap: break-word;
+    max-width: 200px;
+}
+
+.img {
+    height: 300px;
+    width: 300px;
+}
+
+p {
+    position: relative;
+    left: 10px;
+}
