@@ -1,6 +1,6 @@
 import  styles from"./NavigationBar.module.css"
 import React from "react";
-// import { Router, Route, Link} from 'react-router-dom'
+
 
 export function Nav() {
     return (
