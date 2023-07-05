@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { logJSONData } from './components/ShopItemCard/ItemCard';
+import { logJSONData } from './components/shopItemCard/ItemCard.jsx';
 import App from './App';
 import ErrorPage from './routes/root';
-import Details from './components/CardDetails/Details';
+import Details from './components/cardDetails/Details';
 
 async function setupRouter() {
   const phonesData = await logJSONData();
