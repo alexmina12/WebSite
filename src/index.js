@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { logJSONData } from './components/ShopItemCard/ItemCard';
 import App from './App';
 import ErrorPage from './routes/root';
-import PhoneDetails from './components/Detalii';
+import Details from './components/CardDetails/Details';
 
 async function setupRouter() {
   const phonesData = await logJSONData();
@@ -15,7 +15,7 @@ async function setupRouter() {
     },
     ...phonesData.map((phone) => ({
       path: `/${phone.brand}/${phone.id}`,
-      element: <PhoneDetails phone={phone} />,
+      element: <Details phone={phone} />,
     })),
     {
       path: '*',
