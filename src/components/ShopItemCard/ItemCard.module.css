@@ -20,3 +20,11 @@ p {
     position: relative;
     left: 10px;
 }
+
+input {
+    background-color: #eaeaea;
+    display: flex;
+    margin: 20px auto 0 auto;
+    
+}
+  

@@ -4,7 +4,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { logJSONData } from './components/shopItemCard/ItemCard.jsx';
 import App from './App';
 import ErrorPage from './routes/root';
-import Details from './components/cardDetails/Details';
+import Details from './components/cardDetails/Details.jsx';
+import Login from './components/Login/login.jsx';
+import About from './components/About/about.jsx'
 
 async function setupRouter() {
   const phonesData = await logJSONData();
@@ -21,6 +23,14 @@ async function setupRouter() {
       path: '*',
       element: <ErrorPage />,
     },
+    {
+      path: '/login',
+      element: <Login />,
+    },
+    {
+      path: '/about',
+      element: <About />
+    }
   ];
 
   ReactDOM.render(
@@ -28,7 +38,10 @@ async function setupRouter() {
       <Router>
         <Routes>
           {routes.map((route, index) => (
-            <Route key={index} path={route.path} element={route.element} />
+            <Route key={index} 
+            path={route.path} 
+            element={route.element} 
+            />
           ))}
         </Routes>
       </Router>
