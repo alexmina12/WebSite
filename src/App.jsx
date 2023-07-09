@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import { Nav } from './components/navigation/NavigationBar';
-import { Card } from './components/shopItemCard/ItemCard';
+import { Nav } from './components/Navigation/NavigationBar';
+import { Card } from './components/ShopItemCard/ItemCard';
 
 const App = () => {
   return (
