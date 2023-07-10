@@ -6,6 +6,8 @@ import About from './components/About/about';
 import Login from './components/Login/login';
 import Details from '../src/components/cardDetails/Details';
 
+import './App.css';
+
 const App = () => {
   const [phones, setPhones] = useState([]);
 
