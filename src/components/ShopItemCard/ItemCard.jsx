@@ -35,7 +35,7 @@ export async function logJSONData() {
 
 export function Card() {
   const [phones, setPhones] = useState([]);
-  const [selectedPhone, setselectedPhones] = useState(null);
+  const [selectedPhone, setSelectedPhone] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
@@ -50,7 +50,7 @@ export function Card() {
 
 
   const handleItemClick = (phone) => {
-    setselectedPhones(phone);
+    setSelectedPhone(phone);
     navigate(`/${phone.brand}/${phone.id}`)
   };
 

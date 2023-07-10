@@ -1,26 +1,44 @@
-import React from "react";
+import React, {useState} from "react";
 import styles from "./NavigationBar.module.css";
 import { Link } from "react-router-dom";
+import * as RiIcons from 'react-icons/ri';
 
 export function Nav() {
+  const [sidebar, setSidebar] = useState(false);
+
+  const showSidebar = () => setSidebar(!sidebar);
+  console.log(sidebar)
+
   return (
-    <div>
-      <nav>
-        <div className={styles.header}> 
-            <h1>ShopWise</h1>
-            <Link to="/login" className={styles.p}>Login</Link>
-            <Link to="/cart" className={styles.p}>Cart</Link>
+    <>
+      <div className={`${styles['navbar']} ${styles['nav-bar']}`}>
+        <Link to="#" className="menu-bars">
+          <RiIcons.RiMenuLine onClick={showSidebar} />
+        </Link>
+        <div className={`${styles['nav-menu']} ${sidebar ? styles.active : ''}`}>          <ul className={styles['nav-menu-items']}>
+            <li className="navbar-toggle">
+              <Link to="#" className="menu-bars">
+                <RiIcons.RiCloseLine onClick={showSidebar} />
+              </Link>
+            </li>
+            <li className={styles['nav-text']}>
+              <Link to="/">
+                <span>Home</span>
+              </Link>
+            </li>
+            <li className={styles['nav-text']}>
+              <Link to="/about">
+                <span>About</span>
+              </Link>
+            </li>
+            <li className={styles['nav-text']}>
+              <Link to="/login">
+                <span>Login</span>
+              </Link>
+            </li>
+          </ul>
         </div>
-        <ul className={styles.nav}>
-          <li className={styles.space}></li>
-          <li className={styles.links}>Acasa</li>
-          <Link to="/about"><li className={styles.links}>Despre</li></Link>
-          <li className={styles.links}>Experienta</li>
-          <li className={styles.links}>Educatie</li>
-          <li className={styles.links}>Abilitati</li>
-          <li className={styles.links}>Proiecte</li>
-        </ul>
-      </nav>
-    </div>
+      </div>
+    </>
   );
 }
