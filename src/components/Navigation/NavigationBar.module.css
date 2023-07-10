@@ -41,7 +41,7 @@
   }
   
 .nav-text:hover {
-    background-color: #a01c8a;
+    background-color: #fffdff;
 }
   
 .menu-bars, .navbar-toggle {
@@ -52,5 +52,8 @@
 }
 
 a {
+    font-size: 20px;
     text-decoration: none;
+    color: black;
+    font-weight: bold;
 }

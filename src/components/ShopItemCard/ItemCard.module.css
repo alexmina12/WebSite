@@ -82,3 +82,20 @@
   display: flex;
   justify-content: center;
 }
+
+.searchInput {
+  width: 100%;
+  max-width: 300px; /* Schimbă dimensiunea la nevoie */
+}
+
+.searchContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
