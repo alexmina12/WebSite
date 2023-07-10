@@ -34,9 +34,14 @@ export async function logJSONData() {
 
 export function Card() {
   const [phones, setPhones] = useState([]);
+
+//   const [selectedPhone, setSelectedPhone] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+
   const [selectedPhone, setselectedPhones] = useState(null);
   const [visibleCount, setVisibleCount] = useState(25); // Numărul inițial de elemente afișate
   const [showAll, setShowAll] = useState(false); // Starea pentru afișarea tuturor elementelor
+
 
   useEffect(() => {
     async function fetchData() {
@@ -48,7 +53,7 @@ export function Card() {
 
   const navigate = useNavigate()
   const handleItemClick = (phone) => {
-    setselectedPhones(phone);
+    setSelectedPhone(phone);
     navigate(`/${phone.brand}/${phone.id}`)
   };
 
