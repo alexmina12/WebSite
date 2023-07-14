@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import styles from './ItemCard.module.css';
 import MyContext from "../../MyContext";
@@ -19,15 +20,22 @@ export async function logJSONData() {
     operatingSystem: item.Operating_System || "No OS!",
     id: item.objectId,
   }));
+
   return phones;
 }
 
 export function Card() {
   const [phones, setPhones] = useState([]);
+
+  const [selectedPhone, setselectedPhones] = useState(null);
+  const [visibleCount, setVisibleCount] = useState(25); // Numărul inițial de elemente afișate
+  const [showAll, setShowAll] = useState(false); // Starea pentru afișarea tuturor elementelor
+
   const [selectedPhone, setSelectedPhone] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [visibleCount, setVisibleCount] = useState(25);
   const [showAll, setShowAll] = useState(false);
+
 
   useEffect(() => {
     async function fetchData() {
@@ -40,18 +48,25 @@ export function Card() {
   const navigate = useNavigate();
 
   const handleItemClick = (phone) => {
+
+    setselectedPhones(phone);
+    navigate(`/${phone.brand}/${phone.id}`)
+
     setSelectedPhone(phone);
     navigate(`/${phone.brand}/${phone.id}`);
   };
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
+
   };
 
   const handleShowMore = () => {
     setVisibleCount(visibleCount + 25);
     setShowAll(true);
   };
+
+
 
   const handleShowLess = () => {
     setVisibleCount(25);
@@ -66,6 +81,31 @@ export function Card() {
 
   return (
     <MyContext.Provider value={phones}>
+
+      <div className={styles.products}>
+        <h1 className={styles.heading}>Products</h1>
+        <div className={styles.box}>
+          {visiblePhones.map((phone, objectId) => (
+            <div
+              key={objectId}
+              className={`${styles.card} ${selectedPhone === phone ? styles.selected : ''}`}
+              onClick={() => handleItemClick(phone)}
+            >
+              <div className={styles.image}>
+                <img
+                  alt="Server Error"
+                  className={styles.img}
+                  src="https://www.shutterstock.com/image-vector/sold-out-red-rubber-stamp-600w-1912854955.jpg"
+                />
+              </div>
+              <div className={styles.small_card}>
+                <p className={styles.brand}>{phone.brand}</p>
+                <p className={styles.os}>{phone.operatingSystem}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+=======
     <div className={styles.container}>
       <div className={styles.searchContainer}>
         <input
@@ -95,10 +135,14 @@ export function Card() {
             </div>
           </div>
         ))}
-      </div>
 
+      </div>
       <div className={styles.center}>
+
+        {phones.length > visibleCount && !showAll && (
+
         {filteredPhones.length > visibleCount && !showAll && (
+
           <button className={styles["btn-show"]} onClick={handleShowMore}>
             Show More
           </button>
@@ -112,4 +156,7 @@ export function Card() {
     </MyContext.Provider>
   );
 }
+
+
+
 

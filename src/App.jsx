@@ -7,8 +7,8 @@ import { Footer } from './components/Footer/Footer.jsx';
 
 import React, { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Nav } from './components/navigation/NavigationBar';
-import { Card, logJSONData } from './components/shopItemCard/ItemCard';
+import { Nav } from './components/Navigation/NavigationBar';
+import { Card, logJSONData } from './components/ShopItemCard/ItemCard';
 import About from './components/About/about';
 import Login from './components/Login/login';
 import Details from '../src/components/cardDetails/Details';
