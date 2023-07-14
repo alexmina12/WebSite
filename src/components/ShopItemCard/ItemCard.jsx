@@ -1,12 +1,9 @@
-import React, { useEffect, useState, } from "react";
 
+
+import React, { useEffect, useState } from "react";
 import styles from './ItemCard.module.css';
-
 import MyContext from "../../MyContext";
-
 import { useNavigate } from "react-router-dom";
-
-
 
 export async function logJSONData() {
   const response = await fetch(
@@ -24,24 +21,15 @@ export async function logJSONData() {
     operatingSystem: item.Operating_System || "No OS!",
     id: item.objectId,
   }));
-  // const data = phones.map(phone => phone.id)
-  // console.log(data)
   console.log(jsonData)
   return phones;
 }
 
-
-
 export function Card() {
   const [phones, setPhones] = useState([]);
-
-//   const [selectedPhone, setSelectedPhone] = useState(null);
-  const [searchTerm, setSearchTerm] = useState("");
-
   const [selectedPhone, setselectedPhones] = useState(null);
   const [visibleCount, setVisibleCount] = useState(25); // Numărul inițial de elemente afișate
   const [showAll, setShowAll] = useState(false); // Starea pentru afișarea tuturor elementelor
-
 
   useEffect(() => {
     async function fetchData() {
@@ -53,7 +41,7 @@ export function Card() {
 
   const navigate = useNavigate()
   const handleItemClick = (phone) => {
-    setSelectedPhone(phone);
+    setselectedPhones(phone);
     navigate(`/${phone.brand}/${phone.id}`)
   };
 
@@ -61,6 +49,7 @@ export function Card() {
     setVisibleCount(visibleCount + 25); // Adăugați 25 la numărul de elemente afișate
     setShowAll(true);
   };
+  
   const handleShowLess = () => {
     setVisibleCount(25); // Resetați numărul de elemente afișate la 25
     setShowAll(false); // Actualizați starea pentru afișarea tuturor elementelor
@@ -70,34 +59,40 @@ export function Card() {
 
   return (
     <MyContext.Provider value={phones}>
-      <div className={styles.container}>
-      {visiblePhones.map((phone, objectId) => (
-            <div 
-            key={objectId} 
-            className={`${styles.card} ${selectedPhone === phone ? styles.selected : ''}`} 
-            onClick={() => handleItemClick(phone)}>
-            <img alt="Server Error" 
-            className="styles.img" 
-            src="https://www.shutterstock.com/image-vector/sold-out-red-rubber-stamp-600w-1912854955.jpg"></img>
-           <div className="description">
-              <p>{phone.brand}</p>
-              <p>{phone.operatingSystem}</p>
-              
-                </div>
-                
-            
-          </div>
-        ))}
-        
-    
+      <div className={styles.products}>
+        <h1 className={styles.heading}>Products</h1>
+        <div className={styles.box}>
+          {visiblePhones.map((phone, objectId) => (
+            <div
+              key={objectId}
+              className={`${styles.card} ${selectedPhone === phone ? styles.selected : ''}`}
+              onClick={() => handleItemClick(phone)}
+            >
+              <div className={styles.image}>
+                <img
+                  alt="Server Error"
+                  className={styles.img}
+                  src="https://www.shutterstock.com/image-vector/sold-out-red-rubber-stamp-600w-1912854955.jpg"
+                />
+              </div>
+              <div className={styles.small_card}>
+                <p className={styles.brand}>{phone.brand}</p>
+                <p className={styles.os}>{phone.operatingSystem}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-
       <div className={styles.center}>
         {phones.length > visibleCount && !showAll && (
-          <button className={styles["btn-show"]} onClick={handleShowMore}>Show More</button>
+          <button className={styles["btn-show"]} onClick={handleShowMore}>
+            Show More
+          </button>
         )}
         {showAll && (
-          <button className={styles["btn-show"]} onClick={handleShowLess}>Show Less</button>
+          <button className={styles["btn-show"]} onClick={handleShowLess}>
+            Show Less
+          </button>
         )}
       </div>
     </MyContext.Provider>
