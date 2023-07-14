@@ -1,3 +1,10 @@
+
+import React from 'react';
+import './App.css';
+import { Nav } from './components/Navigation/NavigationBar';
+import { Card } from './components/ShopItemCard/ItemCard.jsx';
+import { Footer } from './components/Footer/Footer.jsx';
+
 import React, { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Nav } from './components/navigation/NavigationBar';
@@ -22,12 +29,17 @@ const App = () => {
   return (
     <div className="App">
       <Nav />
+
+      <Card />
+      <Footer />
+
       <Routes>
         <Route path="/" element={<Card />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/:brand/:id" element={<Details phones={phones} />} />
       </Routes>
+
     </div>
   );
 };
