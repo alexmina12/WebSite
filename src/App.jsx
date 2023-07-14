@@ -1,8 +1,7 @@
 
-import React from 'react';
 import './App.css';
 import { Nav } from './components/Navigation/NavigationBar';
-import { Card } from './components/ShopItemCard/ItemCard.jsx';
+import { Card, logJSONData } from './components/ShopItemCard/ItemCard.jsx';
 import { Footer } from './components/Footer/Footer.jsx';
 
 import React, { useState, useEffect } from 'react';
@@ -30,7 +29,6 @@ const App = () => {
       <Nav />
 
       <Card />
-      <Footer />
 
       <Routes>
         <Route path="/" element={<Card />} />
@@ -38,6 +36,8 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/:brand/:id" element={<Details phones={phones} />} />
       </Routes>
+
+      <Footer />
 
     </div>
   );
