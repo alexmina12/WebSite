@@ -5,3 +5,9 @@ h2 {
 body {
     background-color: gray;
 }
+
+p {
+    color: white;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
