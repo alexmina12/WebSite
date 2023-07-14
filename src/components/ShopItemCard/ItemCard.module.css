@@ -118,8 +118,27 @@
   cursor: pointer;
 }
 
+
 .btn-show:hover {
   border: 3px solid red;
   background-color: #0D7377; /* Culoarea de fundal la hover */
   color: #14FFEC; /* Culoarea textului la hover */
 }
+
+.searchInput {
+  width: 100%;
+  max-width: 300px; /* Schimbă dimensiunea la nevoie */
+}
+
+.searchContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+
