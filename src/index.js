@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { logJSONData } from './components/ShopItemCard/ItemCard';
+
 import App from './App';
 
 ReactDOM.render(
