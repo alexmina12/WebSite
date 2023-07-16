@@ -10,7 +10,7 @@ import { Route, Routes } from 'react-router-dom';
 import About from './components/About/about';
 import Login from './components/Login/login';
 import Details from '../src/components/cardDetails/Details';
-
+import Register from '../src/components/Register/Register';
 import './App.css';
 
 const App = () => {
@@ -34,6 +34,7 @@ const App = () => {
         <Route path="/" element={<Card />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/:brand/:id" element={<Details phones={phones} />} />
       </Routes>
 
