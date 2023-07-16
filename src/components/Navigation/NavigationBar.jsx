@@ -7,7 +7,6 @@ export function Nav() {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
-  console.log(sidebar)
 
   return (
     <>
@@ -15,7 +14,7 @@ export function Nav() {
         <Link to="#" className="menu-bars">
           <RiIcons.RiMenuLine onClick={showSidebar} />
         </Link>
-        <div className={`${styles['nav-menu']} ${sidebar ? styles.active : ''}`}>          <ul className={styles['nav-menu-items']}>
+        <div className={`${styles['nav-menu']} ${sidebar ? styles.active : ''}`}><ul className={styles['nav-menu-items']}>
             <li className="navbar-toggle">
               <Link to="#" className="menu-bars">
                 <RiIcons.RiCloseLine onClick={showSidebar} />
@@ -34,6 +33,11 @@ export function Nav() {
             <li className={styles['nav-text']}>
               <Link to="/login">
                 <span>Login</span>
+              </Link>
+            </li>
+            <li className={styles['nav-text']}>
+              <Link to="/register">
+                <span>Register</span>
               </Link>
             </li>
           </ul>
