@@ -71,7 +71,7 @@ export function Card() {
   };
 
 
- 
+  
 
 
   return (
