@@ -20,6 +20,8 @@ export async function logJSONData() {
     id: item.objectId,
   }));
   console.log(jsonData)
+
+
   return phones;
 }
 
@@ -29,6 +31,11 @@ export function Card() {
   const [visibleCount, setVisibleCount] = useState(25); // Numărul inițial de elemente afișate
   const [showAll, setShowAll] = useState(false); // Starea pentru afișarea tuturor elementelor
 
+
+  const [searchValue, setSearchValue] = useState("");
+  const [filteredPhones, setFilteredPhones] = useState([]);
+
+
   useEffect(() => {
     async function fetchData() {
       const phonesData = await logJSONData();
@@ -36,6 +43,16 @@ export function Card() {
     }
     fetchData();
   }, []);
+
+
+
+  useEffect(() => {
+    // Filtrare produse în funcție de valoarea de căutare
+    const filtered = phones.filter((phone) =>
+      phone.brand.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    setFilteredPhones(filtered);
+  }, [searchValue, phones]);
 
   const navigate = useNavigate()
   const handleItemClick = (phone) => {
@@ -53,12 +70,22 @@ export function Card() {
     setShowAll(false); // Actualizați starea pentru afișarea tuturor elementelor
   };
 
-  const visiblePhones = showAll ? phones : phones.slice(0, visibleCount);
+
+ 
+
 
   return (
     <MyContext.Provider value={phones}>
       <div className={styles.products}>
         <h1 className={styles.heading}>Products</h1>
+        <div className={styles.search}>
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+          />
+        </div>
         <div className={styles.box}>
           {visiblePhones.map((phone, objectId) => (
             <div
@@ -82,7 +109,11 @@ export function Card() {
         </div>
       </div>
       <div className={styles.center}>
+
         {phones.length > visibleCount && !showAll && (
+
+        {filteredPhones.length > visibleCount && !showAll && (
+
           <button className={styles["btn-show"]} onClick={handleShowMore}>
             Show More
           </button>
@@ -95,4 +126,8 @@ export function Card() {
       </div>
     </MyContext.Provider>
   );
+
 }
+
+}
+

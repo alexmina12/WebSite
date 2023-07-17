@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Footer.css';
+import styles from './Footer.module.css';
 import fb from '../../assets/fbimg.png';
 import twitter from '../../assets/twitterimg.png';
 import linkedin from '../../assets/linkedinimg.png';
@@ -12,28 +12,28 @@ export function Footer() {
         <div className={styles['section']}>
             <div className={styles['footer-links']}>
             <div className={styles['footer-links-div']}>
-                    <h4>For Business</h4>
-                    <a href='/employer'>
-                        <p>Employer</p>
-                    </a>
-                    <a href='/healthplan'>
-                        <p>Health Plan</p>
-                    </a>
-                    <a href='/individual'>
-                        <p>Individual</p>
-                    </a>
+                <h4>For Business</h4>
+                <a href='/employer'>
+                    <p>Employer</p>
+                </a>
+                <a href='/healthplan'>
+                    <p>Health Plan</p>
+                </a>
+                <a href='/individual'>
+                    <p>Individual</p>
+                </a>
                 </div>
                 <div className={styles['footer-links-div']}>
-                    <h4>Resources</h4>
-                    <a href='/resourcecenter'>
-                        <p>Resource Center</p>
-                    </a>
-                    <a href='/testimonials'>
-                        <p>Testimonials</p>
-                    </a>
-                    <a href='/stv'>
-                        <p>STV</p>
-                    </a>
+                <h4>Resources</h4>
+                <a href='/resourcecenter'>
+                    <p>Resource Center</p>
+                </a>
+                <a href='/testimonials'>
+                    <p>Testimonials</p>
+                </a>
+                <a href='/stv'>
+                    <p>STV</p>
+                </a>
                 </div>
                 <div className={styles['footer-links-div']}>
                     <h4>Partners</h4>
@@ -73,15 +73,10 @@ export function Footer() {
                     <p><img src={twitter} alt=''/></p>
                     <p><img src={linkedin} alt=''/></p>
                     <p><img src={insta} alt=''/></p>
-
                     </div>
-
                 </div>
-
             </div>
-            
             <hr></hr>
-
             <div className={styles['footer-below']}>
                 <div className={styles['footer-copyright']}>
                     <p>
@@ -95,8 +90,6 @@ export function Footer() {
                     <a href="/cookie"><div><p>Cookie Declaration</p></div></a>
                 </div>
             </div>
-
         </div>
-
     </footer>  )
 }
