@@ -1,16 +1,12 @@
-
-import './App.css';
-import { Nav } from './components/Navigation/NavigationBar';
-import { Card, logJSONData } from './components/ShopItemCard/ItemCard.jsx';
-import { Footer } from './components/Footer/Footer.jsx';
-
 import React, { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-
+import { Nav } from './components/navigation/NavigationBar';
+import { Card, logJSONData } from './components/shopItemCard/ItemCard';
+import { Footer } from './components/Footer/Footer';
 import About from './components/About/about';
 import Login from './components/Login/login';
-import Details from '../src/components/cardDetails/Details';
-import Register from '../src/components/Register/Register';
+import Details from './components/cardDetails/Details';
+import Register from './components/Register/Register';
 import './App.css';
 
 const App = () => {
@@ -28,8 +24,6 @@ const App = () => {
     <div className="App">
       <Nav />
 
-      <Card />
-
       <Routes>
         <Route path="/" element={<Card />} />
         <Route path="/about" element={<About />} />
@@ -39,7 +33,6 @@ const App = () => {
       </Routes>
 
       <Footer />
-
     </div>
   );
 };
