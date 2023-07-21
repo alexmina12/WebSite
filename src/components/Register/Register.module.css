@@ -1,5 +1,118 @@
-.content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.container {
+  width: 260px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #1c1c1c;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
 }
+
+.heading {
+  color: #f1f1f1;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px #ff4da6;
+}
+
+.formGroup {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.label {
+  color: #f1f1f1;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 2px solid #007bff;
+  border-radius: 6px;
+  background-color: #121212;
+  color: #f1f1f1;
+  transition: border-color 0.3s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #ff4da6;
+}
+
+/* Style for invisible button */
+.invisible {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* Style for visible button */
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeIn 0.5s ease;
+}
+
+/* Animated effect for visible button */
+.btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #ff4da6;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, visibility 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(255, 77, 166, 0.7);
+  box-shadow: 0 0 10px rgba(255, 77, 166, 0.5);
+}
+
+/* Neon effect for visible button */
+.btn:hover {
+  background-color: #007bff;
+  text-shadow: 2px 2px 4px rgba(0, 123, 255, 0.7);
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.7);
+}
+
+/* Stil pentru mesajul de eroare */
+.errorMsg {
+  color: #ff0707;
+  font-size: 12px;
+  font-weight: 300;
+  margin: 0;
+  padding-top: 10px;
+  animation: showError 0.3s ease;
+}
+
+.inputContainer {
+  position: relative;
+  margin-top: 15px;
+}
+
+/* Stil pentru chenarul cu bordura roșie */
+.error {
+  border-color: #ff0707;
+}
+
+/* Stil pentru formGroup-urile cu eroare */
+.formGroup.error {
+  position: relative;
+}
+  
+/* Stil pentru mesajul de completare a câmpurilor */
+.completionMsg {
+  color: #ff0707;
+  font-size: 12px;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+}
+
