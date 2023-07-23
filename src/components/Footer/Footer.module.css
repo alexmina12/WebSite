@@ -1,17 +1,18 @@
-/* .section {
+.section {
     padding: 4rem 4rem;
+    margin-top: 60px;
 }
 
 Footer {
     background-color: #2d2d32;
 }
 
-/* .footer {
+.footer {
     display: flex;
     flex-direction: column;
-} */
+}
 
-/* .footer-links {
+.footer-links {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -20,74 +21,81 @@ Footer {
     width: 100%;
     text-align: left;
     margin-bottom: 2rem;
-} */
+}
 
 .footer-links-div {
+    height: 262.22px;
     width: 150px;
     margin: 1rem;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: row;
     color: white;
+    text-align: center;
+    border-radius: 100px;
+    box-shadow: 20px 60px 150px 30px white;
 }
 
-/* a {
+a {
     color: rgb(175, 175, 179);
     text-decoration: none;
-} */
-
- .socialmedia {
-    display: inline-block;
-    flex-direction: column;
 }
 
-/* .socialmedia img{
-    width: 80%;
-} */
+.socialmedia {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.socialmedia img {
+    width: 70%; /* Ajustează lățimea imaginilor pentru a încăpea două pe rând */
+    margin: 12px; /* Ajustează spațiul dintre imaginile sociale */
+}
+  
 
-/* .footer-links-div h4{
-    font-size: 14px;
+.footer-links-div h4{
+    font-size: 16px;
     line-height: 17px;
     margin-bottom: 0.9rem;
-} */
+    text-decoration: underline;
+}
 
-/* .footer-links-div p{
+.footer-links-div p{
     font-size: 12px;
     line-height: 15px;
     margin: 0.5rem 0;
     cursor: pointer;
-} */
+}
 
-/* .footer-below {
+.footer-below {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-top: 0.2rem;
-} */
+}
 
-/* .footer-below-links {
+.footer-below-links {
     display: flex;
     flex-direction: row;
-} */
+}
 
-/* .footer-below-links p{
+.footer-below-links p{
     font-size: 13px;
     line-height: 15px;
     margin-left: 2rem;
     color: white;
     font-weight: 600px;
-} */
+}
 
-/* hr {
+hr {
     color: #2d2d32;
     width: 100%;
-} */
+}
 
-/* .footer-copyright {
+.footer-copyright {
     font-style: 13px;
     line-height: 15px;
     color: rgb(255, 255, 255);
     font-weight: 600;
-} */
+}
+
 
 

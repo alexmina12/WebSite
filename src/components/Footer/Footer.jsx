@@ -80,7 +80,7 @@ export function Footer() {
             <div className={styles['footer-below']}>
                 <div className={styles['footer-copyright']}>
                     <p>
-                        @(new Date().getFullYear()) ShopWise, All rights reserved &copy; 
+                        {(new Date().getFullYear())} ShopWise, All rights reserved &copy; 
                     </p>
                 </div>
                 <div className={styles['footer-below-links']}>
