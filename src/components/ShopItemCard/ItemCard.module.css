@@ -1,5 +1,5 @@
 
-/* Products Styles */
+
 .products {
   width: 100%;
   min-height: 100vh;
@@ -7,9 +7,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
   justify-content: flex-start;
   overflow: hidden;
   background-color: #323232;
+
+  overflow: hidden; 
+
 }
 
 .products .heading {
@@ -67,7 +71,11 @@
   max-width: 1200px;
   margin-top: 20px;
   display: grid;
+
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+  grid-template-columns: repeat(5, 1fr); 
+
   gap: 20px;
   align-items: flex-start;
   justify-items: center;
@@ -84,8 +92,12 @@
   background: #0D7377;
   transition: 0.3s;
   overflow: hidden;
+
   border: 2px solid #14FFEC;
   cursor: pointer;
+
+  border: 2px solid #14FFEC; 
+
 }
 
 .products .box .card:hover {
@@ -121,7 +133,11 @@
 
 .products .box .card .small_card .brand,
 .products .box .card .small_card .os {
+
   color: #14FFEC;
+
+  color: #14FFEC; 
+
   font-size: 14px;
 }
 
@@ -138,16 +154,24 @@
   transform: scale(1);
 }
 
-/* Button Show More and Show Less */
+
+
 .btn-show {
   display: block;
   width: fit-content;
   margin: 0 auto;
   padding: 10px 20px;
+
   border: 3px solid #14FFEC;
   border-radius: 5px;
   background-color: transparent;
   color: #14FFEC;
+
+  border: 3px solid #0D7377; 
+  border-radius: 5px;
+  background-color: transparent;
+  color: rgb(20, 255, 236); 
+
   font-size: 16px;
   cursor: pointer;
   background-color: #0D7377;
@@ -155,15 +179,25 @@
 }
 
 .btn-show:hover {
+
   border: 3px solid #0D7377;
   background-color: #14FFEC;
   color: #0D7377;
   box-shadow: 0 0 8px rgb(13, 115, 119);
+
+  border: 3px solid red;
+  background-color: #0D7377; 
+  color: #14FFEC; 
+
 }
 
 .searchInput {
   width: 100%;
+
   max-width: 300px;
+
+  max-width: 300px; 
+
 }
 
 .searchContainer {

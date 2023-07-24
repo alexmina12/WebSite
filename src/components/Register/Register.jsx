@@ -27,18 +27,19 @@ function Register() {
   };
 
   useEffect(() => {
-    // Verificăm dacă emailConfirm corespunde cu email și passwordConfirm corespunde cu password
+  
     const isEmailMatch = email === emailConfirm;
     const isPasswordMatch = password === passwordConfirm;
 
-    // Verificăm dacă sunt completate toate câmpurile
+   
     const isAllFieldsFilled = firstName && email && password && emailConfirm && passwordConfirm;
 
-    // Setăm starea butonului în funcție de coincidență și completarea câmpurilor
+   
     setShowButton(isEmailMatch && isPasswordMatch && isAllFieldsFilled);
 
-    // Setăm starea mesajului de eroare
-    setShowError(!(isAllFieldsFilled && isEmailMatch && isPasswordMatch));
+   
+    setShowError(!isAllFieldsFilled || !isEmailMatch || !isPasswordMatch);
+
   }, [firstName, email, password, emailConfirm, passwordConfirm]);
 
   const handleSubmit = () => {
@@ -48,7 +49,7 @@ function Register() {
       password
     };
 
-    axios.post('http://localhost:3000/register', userData)
+    axios.post('http://localhost:1024/register', userData)
       .then(response => {
         console.log(response.data);
       })

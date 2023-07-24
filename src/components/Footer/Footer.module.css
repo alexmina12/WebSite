@@ -34,9 +34,16 @@
     transition: color 0.3s ease;
   }
   
+
   .footer-links-div a:hover {
     color: #007bff;
   }
+
+.socialmedia img {
+    width: 60%; 
+    margin: 12px; 
+}
+
   
   /* Stilizare la nivelul secțiunii de social media */
   .socialmedia p {

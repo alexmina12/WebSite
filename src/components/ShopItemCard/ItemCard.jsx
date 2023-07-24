@@ -8,8 +8,8 @@ export async function logJSONData() {
     'https://parseapi.back4app.com/classes/Dataset_Cell_Phones_Model_Brand?limit=50',
     {
       headers: {
-        'X-Parse-Application-Id': 'MEqvn3N742oOXsF33z6BFeezRkW8zXXh4nIwOQUT', // This is the fake app's application id
-        'X-Parse-Master-Key': 'uZ1r1iHnOQr5K4WggIibVczBZSPpWfYbSRpD6INw', // This is the fake app's readonly master key
+        'X-Parse-Application-Id': 'MEqvn3N742oOXsF33z6BFeezRkW8zXXh4nIwOQUT', 
+        'X-Parse-Master-Key': 'uZ1r1iHnOQr5K4WggIibVczBZSPpWfYbSRpD6INw', 
       }
     }
   );
@@ -25,8 +25,8 @@ export async function logJSONData() {
 export function Card() {
   const [phones, setPhones] = useState([]);
   const [selectedPhone, setselectedPhones] = useState(null);
-  const [visibleCount, setVisibleCount] = useState(25); // Numărul inițial de elemente afișate
-  const [showAll, setShowAll] = useState(false); // Starea pentru afișarea tuturor elementelor
+  const [visibleCount, setVisibleCount] = useState(25); 
+  const [showAll, setShowAll] = useState(false); 
   const [searchValue, setSearchValue] = useState("");
   const [filteredPhones, setFilteredPhones] = useState([]);
 
@@ -39,7 +39,6 @@ export function Card() {
   }, []);
 
   useEffect(() => {
-    // Filtrare produse în funcție de valoarea de căutare
     const filtered = phones.filter((phone) =>
       phone.brand.toLowerCase().includes(searchValue.toLowerCase())
     );
@@ -58,8 +57,8 @@ export function Card() {
   };
   
   const handleShowLess = () => {
-    setVisibleCount(25); // Resetați numărul de elemente afișate la 25
-    setShowAll(false); // Actualizați starea pentru afișarea tuturor elementelor
+    setVisibleCount(25); 
+    setShowAll(false); 
   };
 
   const visiblePhones = showAll ? filteredPhones : filteredPhones.slice(0, visibleCount);
