@@ -42,6 +42,11 @@ export function Nav() {
                 <span><FcIcons.FcRegisteredTrademark /> Register</span>
               </Link>
             </li>
+            <li className={styles['nav-text']}>
+              <Link to="/ClearCache">
+                <span><FcIcons.FcRegisteredTrademark /> Clear Server Cache</span>
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

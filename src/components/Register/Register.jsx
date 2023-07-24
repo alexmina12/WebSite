@@ -42,7 +42,7 @@ function Register() {
       password
     };
 
-    axios.post('http://localhost:3000/register', userData)
+    axios.post('http://localhost:1024/register', userData)
       .then(response => {
         console.log(response.data);
       })

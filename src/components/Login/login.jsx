@@ -23,7 +23,7 @@ function Login() {
       password
     };
 
-    axios.post('http://localhost:3000/login', userData)
+    axios.post('http://localhost:1024/login', userData)
       .then(response => {
         console.log(response.data);
         setLoginStatus(response.data.message);
