@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import * as RiIcons from 'react-icons/ri';
+import * as FcIcons from 'react-icons/fc'
 import styles from "./NavigationBar.module.css";
 
 export function Nav() {
@@ -23,22 +24,22 @@ export function Nav() {
             </li>
             <li className={styles['nav-text']}>
               <Link to="/">
-                <span>Home</span>
+                <span><FcIcons.FcHome /> Home</span>
               </Link>
             </li>
             <li className={styles['nav-text']}>
               <Link to="/about">
-                <span>About</span>
+                <span><FcIcons.FcAbout /> About</span>
               </Link>
             </li>
             <li className={styles['nav-text']}>
               <Link to="/login">
-                <span>Login</span>
+                <span><RiIcons.RiLoginBoxFill /> Login</span>
               </Link>
             </li>
             <li className={styles['nav-text']}>
               <Link to="/register">
-                <span>Register</span>
+                <span><FcIcons.FcRegisteredTrademark /> Register</span>
               </Link>
             </li>
           </ul>

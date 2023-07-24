@@ -6,7 +6,7 @@ import { Footer } from './components/Footer/Footer.jsx';
 import React, { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-// Elimină importul duplicat al lui 'Footer' de aici
+
 import About from './components/About/about';
 import Login from './components/Login/login';
 import Details from './components/cardDetails/Details';
@@ -36,6 +36,7 @@ const App = () => {
         <Route path="/:brand/:id" element={<Details phones={phones} />} />
       </Routes>
 
+      
       <Footer />
     </div>
   );

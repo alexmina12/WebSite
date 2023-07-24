@@ -1,86 +1,72 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 500px; /* Actualizare lățime container */
-  height: 500px; /* Actualizare înălțime container */
-  margin: 0 auto; /* Actualizare margin pentru a centra containerul */
-  border: 2px solid #14FFEC; /* Actualizare culoare bordură container */
-  background-color: #323232; /* Actualizare culoare fundal container */
-  box-shadow: 0 0 10px #14FFEC; /* Adăugare umbră la container */
-}
-
-.loginHeading {
-  margin-top: 0;
-  color: #14FFEC; /* Actualizare culoare text antet login */
-}
-
-.loginForm {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-label {
-  font-weight: bold;
-  color: #14FFEC; /* Actualizare culoare text etichete input */
-}
-
-input {
-  padding: 5px;
-  background-color: #0D7377; /* Actualizare culoare fundal input */
-  border: 2px solid #14FFEC; /* Actualizare culoare bordură input */
-  color: #14FFEC; /* Actualizare culoare text input */
-  box-shadow: 0 0 5px #14FFEC; /* Adăugare umbră la input */
-}
-
-button {
-  padding: 8px 16px;
-  background-color: #0D7377;
-  color: #14FFEC;
-  border: none;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-
-button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, #0D7377, #14FFEC);
-  opacity: 0.5; /* Opacitatea pentru efectul mixat */
-  z-index: -1; /* Plasăm pseudo-elementul în spatele conținutului butonului */
-}
-
-
-button:hover {
-  box-shadow: 0 0 10px rgba(20, 255, 236, 1); /* Umbra mixată pe hover */
-}
-
-button:hover::before {
-  opacity: 1;
-}
-
-
-.btn-show {
-  display: block;
-  width: fit-content;
-  margin: 0 auto;
-  padding: 10px 20px;
-  border: 3px solid #14FFEC;
-  border-radius: 5px;
-  background-color: transparent;
-  color: #14FFEC;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: #0D7377;
-  box-shadow: 0 0 8px rgb(20, 255, 236);
-  /* Adaugă stiluri pentru a face textul mai vizibil */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adaugă o umbră la text */
-  font-weight: bold; /* Face textul mai gros */
-}
+    width: 260px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #0D7377;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .heading {
+    color: #f1f1f1;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .formGroup {
+    width: 100%;
+    margin-bottom: 15px;
+    margin-right: 20px;
+  text-align: left;
+  }
+  
+  .label {
+    color: #f1f1f1;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 2px solid #212121;
+    border-radius: 6px;
+    background-color: #323232;
+    color: #f1f1f1;
+    transition: border-color 0.3s ease;
+  }
+  
+  .input:focus {
+    outline: none;
+    border-color: #ff4da6;
+  }
+    
+  .btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #ff4da6;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(255, 77, 166, 0.7);
+    box-shadow: 0 0 10px rgba(255, 77, 166, 0.5);
+  }
+  
+  .btn:hover {
+    background-color: #007bff;
+    text-shadow: 2px 2px 4px rgba(0, 123, 255, 0.7);
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.7);
+  }
+  .loginStatus {
+    color: #ff0707;
+    font-size: 12px;
+    margin-top: 5px;
+  }
