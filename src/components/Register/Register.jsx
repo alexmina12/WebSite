@@ -27,17 +27,11 @@ function Register() {
   };
 
   useEffect(() => {
-    // Verifică dacă emailConfirm corespunde cu email și passwordConfirm corespunde cu password
     const isEmailMatch = email === emailConfirm;
     const isPasswordMatch = password === passwordConfirm;
-
-    // Verifică dacă sunt completate toate câmpurile
     const isAllFieldsFilled = firstName && email && password && emailConfirm && passwordConfirm;
 
-    // Setează starea butonului în funcție de coincidență și completarea câmpurilor
     setShowButton(isEmailMatch && isPasswordMatch && isAllFieldsFilled);
-
-    // Setează starea mesajului de eroare
     setShowError(!isAllFieldsFilled || !isEmailMatch || !isPasswordMatch);
   }, [firstName, email, password, emailConfirm, passwordConfirm]);
 

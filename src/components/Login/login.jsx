@@ -26,12 +26,10 @@ function Login() {
     axios.post('http://localhost:3000/login', userData)
       .then(response => {
         console.log(response.data);
-        // Setează starea de login cu răspunsul de la server
         setLoginStatus(response.data.message);
       })
       .catch(error => {
         console.error(error);
-        // Tratarea erorilor
         setLoginStatus('A apărut o eroare la autentificare.');
       });
   };

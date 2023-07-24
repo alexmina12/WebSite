@@ -47,13 +47,11 @@
   border-color: #ff4da6;
 }
 
-/* Style for invisible button */
 .invisible {
   visibility: hidden;
   opacity: 0;
 }
 
-/* Style for visible button */
 .visible {
   visibility: visible;
   opacity: 1;
@@ -61,7 +59,6 @@
   animation: fadeIn 0.5s ease;
 }
 
-/* Animated effect for visible button */
 .btn {
   width: 100%;
   padding: 10px;
@@ -76,14 +73,12 @@
   box-shadow: 0 0 10px rgba(255, 77, 166, 0.5);
 }
 
-/* Neon effect for visible button */
 .btn:hover {
   background-color: #007bff;
   text-shadow: 2px 2px 4px rgba(0, 123, 255, 0.7);
   box-shadow: 0 0 15px rgba(0, 123, 255, 0.7);
 }
 
-/* Stil pentru mesajul de eroare */
 .errorMsg {
   color: red;
   font-size: 16px;
@@ -101,17 +96,14 @@
   margin-top: 15px;
 }
 
-/* Stil pentru chenarul cu bordura roșie */
 .error {
   border-color: #ff0707;
 }
 
-/* Stil pentru formGroup-urile cu eroare */
 .formGroup.error {
   position: relative;
 }
 
-/* Stil pentru mesajul de completare a câmpurilor */
 .completionMsg {
   color: red;
   font-size: 16px;
@@ -119,24 +111,24 @@
   text-align: center;
   margin: 0;
   padding-bottom: 10px;
-  text-shadow: 0 0 0 transparent; /* Valoare inițială, fără umbra vizibilă */
+  text-shadow: 0 0 0 transparent; 
   animation: highlightAnimation 1s infinite alternate;
 }
 
 @keyframes highlightAnimation {
   from {
-    text-shadow: 0 0 0 transparent, 0 0 8px rgba(253, 0, 0, 0.6); /* Două umbre: una inițială fără vizibilitate și una cu o culoare mai slabă */
+    text-shadow: 0 0 0 transparent, 0 0 8px rgba(253, 0, 0, 0.6); 
   }
   25% {
-    text-shadow: 0 0 10px rgba(253, 0, 0, 0.7); /* A doua valoare intermediară cu o culoare mai vizibilă */
+    text-shadow: 0 0 10px rgba(253, 0, 0, 0.7); 
   }
   50% {
-    text-shadow: 0 0 15px rgba(253, 0, 0, 0.8); /* O altă valoare intermediară cu o culoare mai intensă */
+    text-shadow: 0 0 15px rgba(253, 0, 0, 0.8); 
   }
   75% {
-    text-shadow: 0 0 25px rgba(253, 0, 0, 0.9); /* Valoare intermediară cu o culoare intensă */
+    text-shadow: 0 0 25px rgba(253, 0, 0, 0.9); 
   }
   to {
-    text-shadow: 0 0 50px rgb(250, 4, 4); /* Valoare finală, cea mai intensă culoare */
+    text-shadow: 0 0 50px rgb(250, 4, 4); 
   }
 }
