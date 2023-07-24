@@ -1,13 +1,95 @@
+/* Details.module.css */
+.test {
+  /* Stilizarea cardului */
+  max-width: 600px;
+  padding: 30px;
+  border: 2px solid #14FFEC;
+  border-radius: 10px;
+  background-color: #0D7377;
+  box-shadow: 0 0 8px rgba(20, 255, 236, 0.5);
+  margin: 0 auto;
+}
+
+/* Stilizarea textului h2 */
 h2 {
-    color:red;
+  color: #14FFEC; /* Schimbăm culoarea textului h2 în #14FFEC */
 }
 
+/* Stilizarea background-ului body-ului */
 body {
-    background-color: gray;
+  background-color: gray;
 }
 
+/* Stilizarea paragrafelor p */
 p {
-    color: white;
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
+  color: #323232; /* Schimbăm culoarea textului paragrafelor în #323232 */
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Stilizarea div-ului pentru cantitate */
+.quantity {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Stilizarea butoanelor de adaugare si stergere */
+.btn {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  background-color: #14FFEC;
+  color: #0D7377;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Stilizarea afișării cantității */
+.quantityDisplay {
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+}
+
+/* Stilizarea butonului "Adaugă în coș" */
+.addToCartBtn {
+  padding: 10px 20px;
+  background-color: #14FFEC;
+  color: #0D7377;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.addToCartBtn:hover {
+  background-color: #0D7377;
+  color: #14FFEC;
+}
+
+/* Stilizarea butonului "Șterge produsul" */
+.removeFromCartBtn {
+  padding: 10px 20px;
+  background-color: #FF5E5E;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.removeFromCartBtn:hover {
+  background-color: #FF3B3B;
+}
+
+

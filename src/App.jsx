@@ -1,17 +1,12 @@
-
 import './App.css';
 import { Nav } from './components/Navigation/NavigationBar';
 import { Card, logJSONData } from './components/ShopItemCard/ItemCard.jsx';
 import { Footer } from './components/Footer/Footer.jsx';
 
-
-
-
 import React, { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-
-import { Footer } from './components/Footer/Footer';
+// Elimină importul duplicat al lui 'Footer' de aici
 import About from './components/About/about';
 import Login from './components/Login/login';
 import Details from './components/cardDetails/Details';
@@ -33,15 +28,7 @@ const App = () => {
     <div className="App">
       <Nav />
 
-    
-      
-    
-
-
-
       <Routes>
-        
-        
         <Route path="/" element={<Card />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
@@ -50,10 +37,6 @@ const App = () => {
       </Routes>
 
       <Footer />
-
-
-
-
     </div>
   );
 };

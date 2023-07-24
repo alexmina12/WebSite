@@ -2,20 +2,14 @@
 /* Products Styles */
 .products {
   width: 100%;
-  height: auto;
   min-height: 100vh;
   padding: 25px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  justify-content: center;
+  justify-content: flex-start;
   overflow: hidden;
   background-color: #323232;
-
-  /* justify-content: center; */
-  overflow: hidden; /* Elimină scroll-ul */
-
 }
 
 .products .heading {
@@ -29,7 +23,43 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   pointer-events: none;
+  margin-top: 0; /* Adaugă această linie pentru a elimina marginea superioară a titlului */
 }
+
+.products .search .src {
+  width: 80%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #0D7377;
+  color: white;
+  font-size: 16px;
+  box-shadow:  0 0px 4px 3px rgb(20, 255, 236); /* Adaugă această linie pentru a adăuga umbra */
+}
+
+
+.products .search .src::placeholder {
+  color: #14FFEC; /* Adaugă această linie pentru a seta culoarea textului de tip placeholder la alb */
+}
+
+.products .search .src:focus {
+  box-shadow: 0 0px 4px 3px rgb(20, 255, 236);
+}
+
+
+.products .search {
+  margin-top: 20px;
+   /* Adaugă această linie pentru a adăuga spațiu în jurul câmpului de căutare */
+  width: 60%;
+ 
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Adaugă această linie pentru a centra câmpul de căutare */
+ 
+}
+
 
 
 .products .box {
@@ -172,3 +202,4 @@
     height: 400px;
   }
 }
+

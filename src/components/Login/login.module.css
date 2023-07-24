@@ -1,4 +1,86 @@
-.test {
-    color: red;
-    background-color: black;
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px; /* Actualizare lățime container */
+  height: 500px; /* Actualizare înălțime container */
+  margin: 0 auto; /* Actualizare margin pentru a centra containerul */
+  border: 2px solid #14FFEC; /* Actualizare culoare bordură container */
+  background-color: #323232; /* Actualizare culoare fundal container */
+  box-shadow: 0 0 10px #14FFEC; /* Adăugare umbră la container */
+}
+
+.loginHeading {
+  margin-top: 0;
+  color: #14FFEC; /* Actualizare culoare text antet login */
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label {
+  font-weight: bold;
+  color: #14FFEC; /* Actualizare culoare text etichete input */
+}
+
+input {
+  padding: 5px;
+  background-color: #0D7377; /* Actualizare culoare fundal input */
+  border: 2px solid #14FFEC; /* Actualizare culoare bordură input */
+  color: #14FFEC; /* Actualizare culoare text input */
+  box-shadow: 0 0 5px #14FFEC; /* Adăugare umbră la input */
+}
+
+button {
+  padding: 8px 16px;
+  background-color: #0D7377;
+  color: #14FFEC;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #0D7377, #14FFEC);
+  opacity: 0.5; /* Opacitatea pentru efectul mixat */
+  z-index: -1; /* Plasăm pseudo-elementul în spatele conținutului butonului */
+}
+
+
+button:hover {
+  box-shadow: 0 0 10px rgba(20, 255, 236, 1); /* Umbra mixată pe hover */
+}
+
+button:hover::before {
+  opacity: 1;
+}
+
+
+.btn-show {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 10px 20px;
+  border: 3px solid #14FFEC;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #14FFEC;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #0D7377;
+  box-shadow: 0 0 8px rgb(20, 255, 236);
+  /* Adaugă stiluri pentru a face textul mai vizibil */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adaugă o umbră la text */
+  font-weight: bold; /* Face textul mai gros */
 }
