@@ -1,5 +1,3 @@
-
-
 .products {
   width: 100%;
   min-height: 100vh;
@@ -7,11 +5,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
   justify-content: flex-start;
   overflow: hidden;
   background-color: #323232;
-
   overflow: hidden; 
 
 }
@@ -27,7 +23,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   pointer-events: none;
-  margin-top: 0; /* Adaugă această linie pentru a elimina marginea superioară a titlului */
+  margin-top: 0; 
 }
 
 .products .search .src {
@@ -38,45 +34,34 @@
   background-color: #0D7377;
   color: white;
   font-size: 16px;
-  box-shadow:  0 0px 4px 3px rgb(20, 255, 236); /* Adaugă această linie pentru a adăuga umbra */
+  box-shadow:  0 0px 4px 3px rgb(20, 255, 236); 
 }
 
-
 .products .search .src::placeholder {
-  color: #14FFEC; /* Adaugă această linie pentru a seta culoarea textului de tip placeholder la alb */
+  color: #14FFEC; 
 }
 
 .products .search .src:focus {
   box-shadow: 0 0px 4px 3px rgb(20, 255, 236);
 }
 
-
 .products .search {
-  margin-top: 20px;
-   /* Adaugă această linie pentru a adăuga spațiu în jurul câmpului de căutare */
-  width: 60%;
- 
-
+  width: 60%; 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* Adaugă această linie pentru a centra câmpul de căutare */
- 
+  justify-content: center;
+  margin: 0 10px; 
 }
-
-
 
 .products .box {
   width: 100%;
   max-width: 1200px;
   margin-top: 20px;
   display: grid;
-
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-
   grid-template-columns: repeat(5, 1fr); 
-
-  gap: 20px;
+  gap: 40px;
   align-items: flex-start;
   justify-items: center;
 }
@@ -86,18 +71,15 @@
   max-width: 300px;
   height: 450px;
   box-shadow: 0 0 8px rgb(20, 255, 236);
-  border-radius: 5px;
+  border-radius: 50px;
   text-align: center;
   padding: 0;
   background: #0D7377;
   transition: 0.3s;
   overflow: hidden;
-
   border: 2px solid #14FFEC;
   cursor: pointer;
-
   border: 2px solid #14FFEC; 
-
 }
 
 .products .box .card:hover {
@@ -133,71 +115,55 @@
 
 .products .box .card .small_card .brand,
 .products .box .card .small_card .os {
-
   color: #14FFEC;
-
   color: #14FFEC; 
-
   font-size: 14px;
 }
 
-.products .box .card:hover ~ .card,
-.products .box .card:hover ~ .card .image,
-.products .box .card:hover ~ .card .small_card {
+.products .box .card:hover + .card {
   transform: scale(0.9);
   transition: 0.3s;
   z-index: 0;
 }
 
-.products .box .card:hover ~ .card:nth-child(n+6),
-.products .box .card:hover ~ .card:nth-last-child(n+6) {
+.products .box .card:hover + .card:nth-child(n+6),
+.products .box .card:hover + .card:nth-last-child(n+6) {
   transform: scale(1);
 }
-
-
 
 .btn-show {
   display: block;
   width: fit-content;
   margin: 0 auto;
   padding: 10px 20px;
-
   border: 3px solid #14FFEC;
   border-radius: 5px;
   background-color: transparent;
   color: #14FFEC;
-
-  border: 3px solid #0D7377; 
-  border-radius: 5px;
-  background-color: transparent;
-  color: rgb(20, 255, 236); 
-
   font-size: 16px;
   cursor: pointer;
-  background-color: #0D7377;
-  box-shadow: 0 0 8px rgb(20, 255, 236);
+  box-shadow: 0 0 8px rgb(20, 255, 236); /* Stilul inițial al box-shadow */
+  transition: box-shadow 0.3s; /* Tranziție pentru efect de animație */
 }
 
-.btn-show:hover {
 
+.btn-show:hover {
   border: 3px solid #0D7377;
   background-color: #14FFEC;
   color: #0D7377;
-  box-shadow: 0 0 8px rgb(13, 115, 119);
-
-  border: 3px solid red;
-  background-color: #0D7377; 
-  color: #14FFEC; 
-
+  box-shadow: 
+  0 0 100px rgba(13, 115, 119, 1),
+  0 0 150px rgba(13, 115, 119, 0.8),
+  0 0 150px rgba(13, 115, 119, 0.7),
+  0 0 200px rgba(13, 115, 119, 0.6), 
+  0 0 250px rgba(13, 115, 119, 0.5) 
 }
+
 
 .searchInput {
   width: 100%;
-
   max-width: 300px;
-
   max-width: 300px; 
-
 }
 
 .searchContainer {
@@ -205,13 +171,8 @@
   display: flex;
   justify-content: center;
   margin-bottom: 16px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
 }
 
-/* Mobile Styles */
 @media (max-width: 768px) {
   .products .box {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -224,7 +185,6 @@
   }
 }
 
-/* Tablet Styles */
 @media (min-width: 768px) and (max-width: 1024px) {
   .products .box {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -236,4 +196,3 @@
     height: 400px;
   }
 }
-

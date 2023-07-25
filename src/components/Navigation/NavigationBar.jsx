@@ -12,13 +12,13 @@ export function Nav() {
   return (
     <>
       <div className={`${styles.navbar} ${styles['nav-bar']}`}>
-        <Link to="#" className="menu-bars">
+        <Link to="#" className={`${styles['menu-bars']}`}>
           <RiIcons.RiMenuLine onClick={showSidebar} />
         </Link>
         <div className={`${styles['nav-menu']} ${sidebar ? styles.active : ''}`}>
           <ul className={styles['nav-menu-items']}>
-            <li className="navbar-toggle">
-              <Link to="#" className="menu-bars">
+            <li className={styles['navbar-toggle']}>
+              <Link to="#" className={`${styles['menu-bars']}`}>
                 <RiIcons.RiCloseLine onClick={showSidebar} />
               </Link>
             </li>
