@@ -1,8 +1,8 @@
 /* Details.js */
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import styles from './Details.module.css';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import styles from "./Details.module.css";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 function Details({ phones }) {
   const { brand, id } = useParams();
@@ -12,7 +12,9 @@ function Details({ phones }) {
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
-    const foundPhone = phones.find((phone) => phone.brand === brand && phone.id === id);
+    const foundPhone = phones.find(
+      (phone) => phone.brand === brand && phone.id === id
+    );
     setPhone(foundPhone);
   }, [phones, brand, id]);
 
@@ -62,16 +64,27 @@ function Details({ phones }) {
           </button>
         </div>
         {addedToCart ? (
-          <button className={styles.removeFromCartBtn} onClick={handleRemoveFromCart}>
-            <span className={styles.cartIcon}><ShoppingCartIcon /></span> Șterge produsul
+          <button
+            className={styles.removeFromCartBtn}
+            onClick={handleRemoveFromCart}
+          >
+            <span className={styles.cartIcon}>
+              <ShoppingCartIcon />
+            </span>{" "}
+            Șterge produsul
           </button>
         ) : (
           <button className={styles.addToCartBtn} onClick={handleAddToCart}>
-            <span className={styles.cartIcon}><ShoppingCartIcon /></span> Adaugă în coș
+            <span className={styles.cartIcon}>
+              <ShoppingCartIcon />
+            </span>{" "}
+            Adaugă în coș
           </button>
         )}
         {addedToCart && (
-          <p className={styles.feedbackMessage}>Produsul a fost adăugat în coș!</p>
+          <p className={styles.feedbackMessage}>
+            Produsul a fost adăugat în coș!
+          </p>
         )}
       </div>
     </div>

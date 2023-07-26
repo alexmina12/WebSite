@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
-import styles from './ItemCard.module.css';
-import MyContext from "../../MyContext";
+import styles from "./ItemCard.module.css";
+import MyContext from "../../Context/MyContext";
 import { useNavigate } from "react-router-dom";
 
 export async function logJSONData() {
   const response = await fetch(
-    'https://parseapi.back4app.com/classes/Dataset_Cell_Phones_Model_Brand?limit=50',
+    "https://parseapi.back4app.com/classes/Dataset_Cell_Phones_Model_Brand?limit=50",
     {
       headers: {
-        'X-Parse-Application-Id': 'MEqvn3N742oOXsF33z6BFeezRkW8zXXh4nIwOQUT', 
-        'X-Parse-Master-Key': 'uZ1r1iHnOQr5K4WggIibVczBZSPpWfYbSRpD6INw', 
-      }
+        "X-Parse-Application-Id": "MEqvn3N742oOXsF33z6BFeezRkW8zXXh4nIwOQUT",
+        "X-Parse-Master-Key": "uZ1r1iHnOQr5K4WggIibVczBZSPpWfYbSRpD6INw",
+      },
     }
   );
   const jsonData = await response.json();
-  const phones = jsonData.results.map(item => ({
+  const phones = jsonData.results.map((item) => ({
     brand: item.Brand,
     operatingSystem: item.Operating_System || "No OS!",
     id: item.objectId,
@@ -22,11 +22,11 @@ export async function logJSONData() {
   return phones;
 }
 
-export function Card() {
+function Card() {
   const [phones, setPhones] = useState([]);
-  const [selectedPhone, setselectedPhones] = useState(null);
-  const [visibleCount, setVisibleCount] = useState(25); 
-  const [showAll, setShowAll] = useState(false); 
+  const [selectedPhone, setSelectedPhones] = useState(null);
+  const [visibleCount, setVisibleCount] = useState(25);
+  const [showAll, setShowAll] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [filteredPhones, setFilteredPhones] = useState([]);
 
@@ -45,47 +45,50 @@ export function Card() {
     setFilteredPhones(filtered);
   }, [searchValue, phones]);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleItemClick = (phone) => {
-    setselectedPhones(phone);
-    navigate(`/${phone.brand}/${phone.id}`)
+    setSelectedPhones(phone);
+    navigate(`/${phone.brand}/${phone.id}`);
   };
 
   const handleShowMore = () => {
-    setVisibleCount(visibleCount + 25); 
+    setVisibleCount(visibleCount + 25);
     setShowAll(true);
   };
-  
+
   const handleShowLess = () => {
-    setVisibleCount(25); 
-    setShowAll(false); 
+    setVisibleCount(25);
+    setShowAll(false);
   };
 
-  const visiblePhones = showAll ? filteredPhones : filteredPhones.slice(0, visibleCount);
+  const visiblePhones = showAll
+    ? filteredPhones
+    : filteredPhones.slice(0, visibleCount);
 
   return (
     <MyContext.Provider value={phones}>
       <div className={styles.products}>
         <h1 className={styles.heading}>Products</h1>
         <div className={styles.search}>
-        <div className={styles.searchContainer}>
-  <div className={styles.search}>
-  <input className={styles.src}
-  type="text"
-  placeholder="Search..."
-  value={searchValue}
-  onChange={(e) => setSearchValue(e.target.value)}
-/>
-
-  </div>
-</div>
-
+          <div className={styles.searchContainer}>
+            <div className={styles.search}>
+              <input
+                className={styles.src}
+                type="text"
+                placeholder="Search..."
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+              />
+            </div>
+          </div>
         </div>
         <div className={styles.box}>
           {visiblePhones.map((phone, objectId) => (
             <div
               key={objectId}
-              className={`${styles.card} ${selectedPhone === phone ? styles.selected : ''}`}
+              className={`${styles.card} ${
+                selectedPhone === phone ? styles.selected : ""
+              }`}
               onClick={() => handleItemClick(phone)}
             >
               <div className={styles.image}>
@@ -119,3 +122,4 @@ export function Card() {
   );
 }
 
+export default Card;
