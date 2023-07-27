@@ -11,6 +11,7 @@ import Card from "./components/shopItemCard/ItemCard";
 import Footer from "./components/Footer/Footer";
 import { AuthProvider } from "./Context/AuthContext";
 import "./App.css";
+import Profile from "./components/Profile/Profile";
 
 const About = lazy(() => import("./components/About/about"));
 const Login = lazy(() => import("./components/Login/login"));
@@ -44,6 +45,7 @@ const App = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/:brand/:id" element={<Details phones={phones} />} />
             <Route path="/ClearCache" element={<ClearCache />} />
+            <Route path="/Profile" element={<Profile />} />
           </Routes>
         </Suspense>
         <Footer />

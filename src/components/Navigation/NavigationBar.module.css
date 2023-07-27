@@ -62,4 +62,9 @@
   margin-left: auto;
   color: red;
   font-size: 24px;
+  cursor: pointer;
+}
+
+.profile {
+  color: palegreen;
 }
