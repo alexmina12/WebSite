@@ -1,16 +1,11 @@
-import React, {
-  useState,
-  useEffect,
-  lazy,
-  Suspense,
-  startTransition,
-} from "react";
+import React, { useState, useEffect, lazy, Suspense, startTransition } from "react";
 import { Route, Routes } from "react-router-dom";
-import Nav from "./components/navigation/NavigationBar";
-import Card from "./components/shopItemCard/ItemCard";
+import Nav from "./components/Navigation/NavigationBar";
+import Card from "./components/ShopItemCard/ItemCard";
 import Footer from "./components/Footer/Footer";
 import { AuthProvider } from "./Context/AuthContext";
 import "./App.css";
+import ChatBot from "./components/ChatBot/ChatBot";
 
 const About = lazy(() => import("./components/About/about"));
 const Login = lazy(() => import("./components/Login/login"));
@@ -23,7 +18,7 @@ const App = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const module = await import("./components/shopItemCard/ItemCard");
+      const module = await import("./components/ShopItemCard/ItemCard");
       const phonesData = await module.logJSONData();
       startTransition(() => {
         setPhones(phonesData);
@@ -47,8 +42,12 @@ const App = () => {
           </Routes>
         </Suspense>
         <Footer />
+
+        {/* ChatBot Component */}
+        <ChatBot />
       </div>
     </AuthProvider>
   );
 };
+
 export default App;
