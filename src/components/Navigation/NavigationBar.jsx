@@ -5,6 +5,7 @@ import * as FcIcons from "react-icons/fc";
 import * as IoIcons from "react-icons/io5";
 import styles from "./NavigationBar.module.css";
 import AuthContext from "../../Context/AuthContext";
+import * as CgIcons from "react-icons/cg";
 
 function Nav() {
   const [sidebar, setSidebar] = useState(false);
@@ -28,6 +29,11 @@ function Nav() {
         {isLoggedIn && (
           <div className={styles.delog}>
             <IoIcons.IoLogOut onClick={handleLogout} />
+          </div>
+        )}
+        {isLoggedIn && (
+          <div className={styles.profile}>
+            <CgIcons.CgProfile />
           </div>
         )}
         <div
@@ -69,13 +75,23 @@ function Nav() {
                 </span>
               </li>
             )}
-            <li className={styles["nav-text"]}>
-              <Link to="/register">
-                <span>
-                  <FcIcons.FcRegisteredTrademark /> Register
-                </span>
+            {!isLoggedIn ? (
+              <li className={styles["nav-text"]}>
+                <Link to="/register">
+                  <span>
+                    <FcIcons.FcRegisteredTrademark /> Register
+                  </span>
+                </Link>
+              </li>
+            ) : (
+              <Link to="/Profile">
+                <li className={styles["nav-text"]}>
+                  <span>
+                    <CgIcons.CgProfile /> Profile
+                  </span>
+                </li>
               </Link>
-            </li>
+            )}
             <li className={styles["nav-text"]}>
               <Link to="/ClearCache">
                 <span>

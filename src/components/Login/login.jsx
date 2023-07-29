@@ -3,6 +3,7 @@ import styles from "./login.module.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../Context/AuthContext";
+import ErrorPage from "../../routes/root";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -49,11 +50,9 @@ function Login() {
   };
 
   // Dacă utilizatorul este logat, îl redirecționăm către pagina principală
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate("/");
-    }
-  }, [isLoggedIn, navigate]);
+  if (isLoggedIn) {
+    return <ErrorPage />;
+  }
 
   return (
     <div className={styles.container}>
