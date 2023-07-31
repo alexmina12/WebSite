@@ -16,6 +16,8 @@ import ChatBot from "./components/ChatBot/ChatBot";
 
 import Profile from "./components/Profile/Profile";
 
+import AcceptCookies from "./components/Cookies/AcceptCookies";
+
 const About = lazy(() => import("./components/About/about"));
 const Login = lazy(() => import("./components/Login/login"));
 const Details = lazy(() => import("./components/cardDetails/Details"));
@@ -55,6 +57,8 @@ const App = () => {
 
         {/* ChatBot Component */}
         <ChatBot />
+        {/* Accept Cookies Component */}
+       <AcceptCookies />
       </div>
     </AuthProvider>
   );
