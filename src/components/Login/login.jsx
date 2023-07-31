@@ -9,7 +9,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginStatus, setLoginStatus] = useState("");
-  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, setIsLoggedIn, setUser } = useContext(AuthContext); // Adăugăm `setUser` în context pentru a actualiza starea `user`
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,17 +34,22 @@ function Login() {
     axios
       .post("http://localhost:1024/login", userData)
       .then((response) => {
-        console.log(response.data);
         setLoginStatus(response.data.message);
         if (response.data.success) {
-          // Actualizează valoarea isLoggedIn cu true după autentificare reușită
-          setIsLoggedIn(true);
-          // Redirecționează către pagina principală după autentificare
-          navigate("/");
+          if (response.data.user) {
+            setIsLoggedIn(true);
+            setUser(response.data.user);
+            navigate("/");
+          } else {
+            console.error(
+              "Datele utilizatorului lipsesc din răspunsul serverului."
+            );
+            setLoginStatus("A apărut o eroare la autentificare.");
+          }
         }
       })
       .catch((error) => {
-        console.error(error);
+        console.error("Login error:", error);
         setLoginStatus("A apărut o eroare la autentificare.");
       });
   };

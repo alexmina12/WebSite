@@ -12,9 +12,7 @@ function Nav() {
   const showSidebar = () => setSidebar(!sidebar);
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
 
-  useEffect(() => {
-    console.log("isLoggedIn changed:", isLoggedIn);
-  }, [isLoggedIn]);
+  useEffect(() => {}, [isLoggedIn]);
 
   const handleLogout = () => {
     setIsLoggedIn(false);
@@ -59,7 +57,6 @@ function Nav() {
                 </span>
               </Link>
             </li>
-            {/* Elimină link-ul de login dacă utilizatorul este autentificat */}
             {!isLoggedIn ? (
               <li className={styles["nav-text"]}>
                 <Link to="/login">

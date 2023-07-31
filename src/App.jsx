@@ -1,4 +1,10 @@
-import React, { useState, useEffect, lazy, Suspense, startTransition } from "react";
+import React, {
+  useState,
+  useEffect,
+  lazy,
+  Suspense,
+  startTransition,
+} from "react";
 import { Route, Routes } from "react-router-dom";
 import Nav from "./components/Navigation/NavigationBar";
 import Card from "./components/ShopItemCard/ItemCard";
@@ -9,7 +15,6 @@ import "./App.css";
 import ChatBot from "./components/ChatBot/ChatBot";
 
 import Profile from "./components/Profile/Profile";
-
 
 const About = lazy(() => import("./components/About/about"));
 const Login = lazy(() => import("./components/Login/login"));

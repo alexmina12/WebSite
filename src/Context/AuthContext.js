@@ -3,23 +3,26 @@ import { createContext, useState, useEffect } from "react";
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    // Get the isLoggedIn value from localStorage, or default to false if not found
+    return JSON.parse(localStorage.getItem("isLoggedIn")) || false;
+  });
+  const [user, setUser] = useState(() => {
+    // Get the user data from localStorage, or default to null if not found
+    return JSON.parse(localStorage.getItem("user")) || null;
+  });
 
   useEffect(() => {
-    // Verificăm dacă există informații despre utilizatorul autentificat în localStorage
-    const storedLoggedInStatus = localStorage.getItem("isLoggedIn");
-    if (storedLoggedInStatus === "true") {
-      setIsLoggedIn(true);
+    localStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
+    } else {
+      localStorage.removeItem("user");
     }
-  }, []);
-
-  // Actualizăm starea isLoggedIn în localStorage când se modifică
-  useEffect(() => {
-    localStorage.setItem("isLoggedIn", isLoggedIn);
-  }, [isLoggedIn]);
+  }, [isLoggedIn, user]);
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+    <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn, user, setUser }}>
       {children}
     </AuthContext.Provider>
   );

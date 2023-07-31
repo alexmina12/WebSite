@@ -40,7 +40,7 @@ function Details({ phones }) {
   };
 
   if (!phone) {
-    return <p>Phone not found.</p>;
+    return <p className={styles.error}>Phone not found.</p>;
   }
 
   return (
