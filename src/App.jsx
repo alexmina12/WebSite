@@ -20,6 +20,8 @@ import AcceptCookies from "./components/Cookies/AcceptCookies";
 
 import DeliveryButton from './components/Delivery/DeliveryButton'; 
 
+import ContactUs from "./components/Contact/ContactUs";
+
 const About = lazy(() => import("./components/About/about"));
 const Login = lazy(() => import("./components/Login/login"));
 const Details = lazy(() => import("./components/cardDetails/Details"));
@@ -63,6 +65,8 @@ const App = () => {
        <AcceptCookies />
        {/* Delivery Button Component */}
        <DeliveryButton />
+       {/* Add the ContactUs */}
+       <ContactUs />
       </div>
     </AuthProvider>
   );
