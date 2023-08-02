@@ -1,3 +1,91 @@
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
 html {
   color: darkturquoise;
+}
+
+h1 {
+  padding: 0 30px;
+}
+
+.profile {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+.profileContainer1,
+.profileContainer2,
+.profileContainer3 {
+  position: relative;
+  background-color: #323232;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+/* Adăugăm pseudo-elementele pentru a crea linia animată */
+.profileContainer1::before,
+.profileContainer2::before,
+.profileContainer3::before,
+.profileContainer1::after,
+.profileContainer2::after,
+.profileContainer3::after {
+  content: "";
+  position: absolute;
+}
+
+.profileContainer1::before .profileContainer2::before,
+.profileContainer3::before {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 3px solid transparent;
+  border-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
+  border-image-slice: 1;
+  border-image-width: 3%;
+  animation: spin 2.5s linear infinite;
+}
+
+.profileContainer1::after,
+.profileContainer2::after,
+.profileContainer3::after {
+  bottom: -3px;
+  right: -3px;
+  width: 100%;
+  height: 100%;
+  border: 3px solid transparent;
+  border-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
+  border-image-slice: 1;
+  border-image-width: 3%;
+  animation: spin 2.5s linear infinite;
+}
+
+/* Animatie pentru mișcarea liniei */
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+.icon {
+  color: red;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.icon:hover {
+  font-size: 18px;
+  text-align: center;
+}
+
+.name {
+  padding-bottom: 20px;
 }
