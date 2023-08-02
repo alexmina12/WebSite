@@ -45,7 +45,9 @@ function Details({ phones }) {
   };
 
   const adaugaInCos = () => {
-    const existentInCos = articoleCos.find((articol) => articol.id === telefonSelectat.id);
+    const existentInCos = articoleCos.find(
+      (articol) => articol.id === telefonSelectat.id
+    );
     if (existentInCos) {
       setArticoleCos(
         articoleCos.map((articol) =>
@@ -109,21 +111,38 @@ function Details({ phones }) {
     alert("Plată efectuată cu succes!\n\n" + mesajPlataFinalizata);
   };
 
+  // Lista statică de specificații (aceste date ar trebui să fie obținute dintr-o sursă externă în realitate)
+  const specificatiiProdus = [
+    { label: "Sistem de operare:", value: "Android" },
+    { label: "Detalii:", value: "Smartphone performant" },
+    { label: "An:", value: "2023" },
+    { label: "Chipset:", value: "Snapdragon 888" },
+  ];
+
   if (!telefonSelectat) {
     return <p>Telefonul nu a fost găsit.</p>;
   }
 
   return (
     <div className={styles.productContainer}>
-      <div className={styles.productImage}>
-        <img src={telefonSelectat.image} alt={telefonSelectat.brand} />
-      </div>
+    
       <div className={styles.productDetails}>
         <h2>{telefonSelectat.brand}</h2>
-        <p>Sistem de operare: {telefonSelectat.sistemOperare}</p>
-        <p>Detalii: {telefonSelectat.detalii}</p>
-        <p>An: {telefonSelectat.an}</p>
-        <p>Chipset: {telefonSelectat.chipset}</p>
+
+        <div className={styles.specificationsContainer}>
+          {/* Afișăm lista de specificații */}
+          {specificatiiProdus.map((specificatie, index) => (
+            <div key={index} className={styles.specificationItem}>
+              <span className={styles.specificationLabel}>
+                {specificatie.label}
+              </span>
+              <span className={styles.specificationValue}>
+                {specificatie.value}
+              </span>
+            </div>
+          ))}
+        </div>
+
         <div className={styles.quantity}>
           <button className={styles.quantityBtn} onClick={micsoreazaCantitate}>
             -
@@ -159,6 +178,7 @@ function Details({ phones }) {
             Adaugă în Coș
           </button>
         )}
+
         {adaugatInCos && afiseazaPlata && (
           <div className={styles.paymentContainer}>
             <h3>Alege Metoda de Livrare:</h3>
@@ -219,8 +239,8 @@ function Details({ phones }) {
                       schimbaInformatiiLivrare(event);
                     }
                   }}
-                  pattern="[0-9]*"     // Permite doar cifre
-                  maxLength="10"       // Lungime maximă de 10 caractere (cifre)
+                  pattern="[0-9]*" // Permite doar cifre
+                  maxLength="10" // Lungime maximă de 10 caractere (cifre)
                 />
               </div>
             )}

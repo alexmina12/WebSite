@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import styles from "./ItemCard.module.css";
 import MyContext from "../../Context/MyContext";
 import { useNavigate } from "react-router-dom";
+import Logo from "./img/Logo.jpg";
 
+// Funcție pentru a obține date JSON din API
 export async function logJSONData() {
   const response = await fetch(
     "https://parseapi.back4app.com/classes/Dataset_Cell_Phones_Model_Brand?limit=50",
@@ -16,7 +18,7 @@ export async function logJSONData() {
   const jsonData = await response.json();
   const phones = jsonData.results.map((item) => ({
     brand: item.Brand,
-    operatingSystem: item.Operating_System || "No OS!",
+    operatingSystem: item.Operating_System || "Fără sistem de operare!",
     id: item.objectId,
   }));
   return phones;
@@ -68,14 +70,16 @@ function Card() {
   return (
     <MyContext.Provider value={phones}>
       <div className={styles.products}>
-        <h1 className={styles.heading}>Products</h1>
+        {/* Adaugă imaginea de logo */}
+        <img src={Logo} alt="Logo" className={styles.logo} />
+        <h1 className={styles.heading}>Produse</h1>
         <div className={styles.search}>
           <div className={styles.searchContainer}>
             <div className={styles.search}>
               <input
                 className={styles.src}
                 type="text"
-                placeholder="Search..."
+                placeholder="Caută..."
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
               />
@@ -93,7 +97,7 @@ function Card() {
             >
               <div className={styles.image}>
                 <img
-                  alt="Server Error"
+                  alt="Eroare server"
                   className={styles.img}
                   src="https://www.shutterstock.com/image-vector/sold-out-red-rubber-stamp-600w-1912854955.jpg"
                 />
@@ -109,12 +113,12 @@ function Card() {
       <div className={styles.center}>
         {filteredPhones.length > visibleCount && !showAll && (
           <button className={styles["btn-show"]} onClick={handleShowMore}>
-            Show More
+            Afișează mai multe
           </button>
         )}
         {showAll && (
           <button className={styles["btn-show"]} onClick={handleShowLess}>
-            Show Less
+            Afișează mai puține
           </button>
         )}
       </div>

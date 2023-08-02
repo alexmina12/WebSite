@@ -1,52 +1,40 @@
-:root {
-  --primary-color: #0D7377;
-  --secondary-color: #14FFEC;
-  --highlight-color: #e74c3c;
-  --text-color: #34495e;
-}
+/* Global styles (if any) */
 
 .productContainer {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 30px;
-  background-color: var(--primary-color);
-  color: var(--text-color);
+  min-height: 100vh;
+  background-color: rgb(50, 50, 50);
 }
 
-.productImage img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+
 
 .productDetails {
   max-width: 800px;
-  width: 100%;
-  padding: 20px;
-  margin-top: 20px;
+  width: 90%;
+  padding: 30px;
   border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  box-shadow: 0 0 8px rgba(20, 255, 236, 0.5);
+  color: rgb(13, 115, 119);
+  text-align: center;
 }
 
 .productDetails h2 {
-  text-align: center;
-  color: var(--secondary-color);
+  font-size: 24px;
   margin-bottom: 10px;
+  color: rgb(13, 115, 119);
 }
 
-.productDetails p {
-  font-weight: bold;
-  font-family: "Segoe UI", Arial, sans-serif;
-  margin-bottom: 8px;
+.specificationsContainer {
+  margin-bottom: 20px;
 }
 
-.quantity {
+.specificationItem {
   display: flex;
-  align-items: center;
-  margin-top: 20px;
+  justify-content: space-between;
+  margin-bottom: 5px;
 }
 
 .quantityBtn {
@@ -54,8 +42,8 @@
   height: 30px;
   border: none;
   border-radius: 5px;
-  background-color: var(--secondary-color);
-  color: #fff;
+  background-color: rgb(20, 255, 236);
+  color: rgb(13, 115, 119);
   font-size: 18px;
   cursor: pointer;
   margin: 0 10px;
@@ -71,93 +59,93 @@
 
 .addToCartBtn,
 .removeFromCartBtn,
-.proceedToPaymentBtn,
-.finishPaymentBtn {
+.proceedToPaymentBtn {
   padding: 10px 20px;
+  color: #fff;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.addToCartBtn {
+  background-color: rgb(20, 255, 236);
+}
+
+.removeFromCartBtn {
+  background-color: rgb(50, 50, 50);
+}
+
+.proceedToPaymentBtn {
+  background-color: rgb(13, 115, 119);
+}
+
+.addToCartBtn:hover,
+.removeFromCartBtn:hover,
+.proceedToPaymentBtn:hover {
+  background-color: #ffffff;
+  color: rgb(13, 115, 119);
+}
+
+.cartIcon {
+  margin-right: 5px;
+}
+
+.paymentContainer {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: rgb(20, 255, 236);
+  border-radius: 10px;
+}
+
+.paymentContainer h3 {
+  margin-bottom: 10px;
+}
+
+.paymentContainer label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.paymentContainer input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid rgb(13, 115, 119);
+  margin-bottom: 10px;
+}
+
+.finishPaymentBtn {
+  padding: 14px 30px;
   color: #fff;
   font-size: 16px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 20px;
-  display: block;
-  margin: 0 auto;
-  text-align: center;
-  width: 200px;
+  background-color: rgb(13, 115, 119);
+  width: 100%;
   transition: background-color 0.3s ease;
 }
 
-.addToCartBtn {
-  background-color: var(--secondary-color);
-}
-
-.removeFromCartBtn {
-  background-color: var(--highlight-color);
-}
-
-.proceedToPaymentBtn,
-.finishPaymentBtn {
-  background-color: var(--primary-color);
-}
-
-.addToCartBtn:hover,
-.removeFromCartBtn:hover,
-.proceedToPaymentBtn:hover,
 .finishPaymentBtn:hover {
-  background-color: var(--secondary-color);
+  background-color: rgb(20, 255, 236);
+  color: rgb(13, 115, 119);
 }
 
 .feedbackMessage {
   text-align: center;
-  font-size: 18px;
   margin-top: 20px;
+  color: rgb(13, 115, 119);
+  font-weight: bold;
 }
 
-.paymentContainer {
-  margin-top: 20px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  color: var(--primary-color);
+.error {
+  color: red;
 }
 
-.paymentContainer h3 {
-  text-align: center;
-  margin-bottom: 15px;
-}
-
-.paymentContainer label {
-  display: block;
-  margin: 10px;
-}
-
-.paymentContainer input[type="radio"] {
-  margin-right: 10px;
-}
-
-.finishPaymentBtn {
-  background-color: var(--secondary-color);
-}
-
-.paymentContainer input[type="text"],
-.paymentContainer input[type="tel"] {
-  width: 100%;
-  padding: 10px;
-  margin: 5px 0;
-  border: 1px solid var(--primary-color);
-  border-radius: 5px;
-  color: var(--primary-color);
-  background-color: #fff;
-}
-
-.paymentContainer label[for="telefon"] {
-  display: block;
-  margin: 10px;
-  font-size: 18px;
-  color: var(--text-color);
-}
-
-.paymentContainer label input[type="radio"]:checked::before {
-  border: 3px solid var(--primary-color);
+input[type="radio"] {
+  margin-right: 5px;
 }

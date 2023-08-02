@@ -9,22 +9,23 @@ import * as CgIcons from "react-icons/cg";
 
 function Nav() {
   const [sidebar, setSidebar] = useState(false);
-  const showSidebar = () => setSidebar(!sidebar);
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
 
-  useEffect(() => {
-    console.log("isLoggedIn changed:", isLoggedIn);
-  }, [isLoggedIn]);
+  useEffect(() => {}, [isLoggedIn]);
 
   const handleLogout = () => {
     setIsLoggedIn(false);
+  };
+
+  const closeSidebar = () => {
+    setSidebar(false);
   };
 
   return (
     <>
       <div className={`${styles.navbar} ${styles["nav-bar"]}`}>
         <Link to="#" className={`${styles["menu-bars"]}`}>
-          <RiIcons.RiMenuLine onClick={showSidebar} />
+          <RiIcons.RiMenuLine onClick={() => setSidebar(!sidebar)} />
         </Link>
         {isLoggedIn && (
           <div className={styles.delog}>
@@ -36,33 +37,30 @@ function Nav() {
             <CgIcons.CgProfile />
           </div>
         )}
-        <div
-          className={`${styles["nav-menu"]} ${sidebar ? styles.active : ""}`}
-        >
+        <div className={`${styles["nav-menu"]} ${sidebar ? styles.active : ""}`}>
           <ul className={styles["nav-menu-items"]}>
             <li className={styles["navbar-toggle"]}>
               <Link to="#" className={`${styles["menu-bars"]}`}>
-                <RiIcons.RiCloseLine onClick={showSidebar} />
+                <RiIcons.RiCloseLine onClick={() => setSidebar(false)} />
               </Link>
             </li>
             <li className={styles["nav-text"]}>
-              <Link to="/">
+              <Link to="/" onClick={closeSidebar}>
                 <span>
                   <FcIcons.FcHome /> Home
                 </span>
               </Link>
             </li>
             <li className={styles["nav-text"]}>
-              <Link to="/about">
+              <Link to="/about" onClick={closeSidebar}>
                 <span>
                   <FcIcons.FcAbout /> About
                 </span>
               </Link>
             </li>
-            {/* Elimină link-ul de login dacă utilizatorul este autentificat */}
             {!isLoggedIn ? (
               <li className={styles["nav-text"]}>
-                <Link to="/login">
+                <Link to="/login" onClick={closeSidebar}>
                   <span>
                     <RiIcons.RiLoginBoxFill /> Login
                   </span>
@@ -77,14 +75,14 @@ function Nav() {
             )}
             {!isLoggedIn ? (
               <li className={styles["nav-text"]}>
-                <Link to="/register">
+                <Link to="/register" onClick={closeSidebar}>
                   <span>
                     <FcIcons.FcRegisteredTrademark /> Register
                   </span>
                 </Link>
               </li>
             ) : (
-              <Link to="/Profile">
+              <Link to="/Profile" onClick={closeSidebar}>
                 <li className={styles["nav-text"]}>
                   <span>
                     <CgIcons.CgProfile /> Profile
@@ -93,7 +91,7 @@ function Nav() {
               </Link>
             )}
             <li className={styles["nav-text"]}>
-              <Link to="/ClearCache">
+              <Link to="/ClearCache" onClick={closeSidebar}>
                 <span>
                   <FcIcons.FcRegisteredTrademark /> Clear Server Cache
                 </span>
