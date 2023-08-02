@@ -18,6 +18,8 @@ import Profile from "./components/Profile/Profile";
 
 import AcceptCookies from "./components/Cookies/AcceptCookies";
 
+import DeliveryButton from './components/Delivery/DeliveryButton'; 
+
 const About = lazy(() => import("./components/About/about"));
 const Login = lazy(() => import("./components/Login/login"));
 const Details = lazy(() => import("./components/cardDetails/Details"));
@@ -59,6 +61,8 @@ const App = () => {
         <ChatBot />
         {/* Accept Cookies Component */}
        <AcceptCookies />
+       {/* Delivery Button Component */}
+       <DeliveryButton />
       </div>
     </AuthProvider>
   );
