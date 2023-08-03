@@ -1,14 +1,13 @@
-
 .contact-button {
-  position: absolute;
-  right: 47%;
-  top: 3852px;
+  margin: 0 auto;
+  /* bottom: 1500px; */
   padding: 10px 20px;
   background-color: #0d7377;
   color: #fff;
-  border: none;
-  border: none;
   cursor: pointer;
+  display: block;
+  border: none;
+  /* left: 50px; */
 }
 
 .popup {
