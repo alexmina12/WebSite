@@ -70,7 +70,6 @@ function Card() {
   return (
     <MyContext.Provider value={phones}>
       <div className={styles.products}>
-        {/* Adaugă imaginea de logo */}
         <img src={Logo} alt="Logo" className={styles.logo} />
         <h1 className={styles.heading}>Produse</h1>
         <div className={styles.search}>

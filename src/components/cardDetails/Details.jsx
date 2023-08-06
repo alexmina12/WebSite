@@ -65,7 +65,9 @@ function Details({ phones }) {
   const scoateDinCos = () => {
     setAdaugatInCos(false);
     setCantitate(1);
-    setArticoleCos(articoleCos.filter((articol) => articol.id !== telefonSelectat.id));
+    setArticoleCos(
+      articoleCos.filter((articol) => articol.id !== telefonSelectat.id)
+    );
   };
 
   const schimbaMetodaLivrare = (event) => {
@@ -91,7 +93,9 @@ function Details({ phones }) {
   const construiesteMesajPlataFinalizata = (sumaTotalaPlata) => {
     let mesaj = "Produse cumpărate:\n";
     for (const articol of articoleCos) {
-      mesaj += `- ${articol.brand} x ${articol.cantitate} - ${articol.pret * articol.cantitate} lei\n`;
+      mesaj += `- ${articol.brand} x ${articol.cantitate} - ${
+        articol.pret * articol.cantitate
+      } lei\n`;
     }
     mesaj += `\nSuma totală plătită: ${sumaTotalaPlata.toFixed(2)} lei`;
     return mesaj;
@@ -104,7 +108,8 @@ function Details({ phones }) {
     }
 
     const sumaTotalaPlata = sumaTotala + costLivrare;
-    const mesajPlataFinalizata = construiesteMesajPlataFinalizata(sumaTotalaPlata);
+    const mesajPlataFinalizata =
+      construiesteMesajPlataFinalizata(sumaTotalaPlata);
 
     setArticoleCos([]);
     setAfiseazaPlata(false);
@@ -125,12 +130,10 @@ function Details({ phones }) {
 
   return (
     <div className={styles.productContainer}>
-    
       <div className={styles.productDetails}>
         <h2>{telefonSelectat.brand}</h2>
 
         <div className={styles.specificationsContainer}>
-          {/* Afișăm lista de specificații */}
           {specificatiiProdus.map((specificatie, index) => (
             <div key={index} className={styles.specificationItem}>
               <span className={styles.specificationLabel}>
@@ -154,10 +157,7 @@ function Details({ phones }) {
         </div>
         {adaugatInCos ? (
           <div>
-            <button
-              className={styles.removeFromCartBtn}
-              onClick={scoateDinCos}
-            >
+            <button className={styles.removeFromCartBtn} onClick={scoateDinCos}>
               <span className={styles.cartIcon}>
                 <ShoppingCartIcon />
               </span>{" "}

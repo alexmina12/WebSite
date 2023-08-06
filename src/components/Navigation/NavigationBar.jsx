@@ -9,7 +9,7 @@ import * as CgIcons from "react-icons/cg";
 
 function Nav() {
   const [sidebar, setSidebar] = useState(false);
-  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, setIsLoggedIn, user } = useContext(AuthContext);
 
   useEffect(() => {}, [isLoggedIn]);
 
@@ -37,7 +37,9 @@ function Nav() {
             <CgIcons.CgProfile />
           </div>
         )}
-        <div className={`${styles["nav-menu"]} ${sidebar ? styles.active : ""}`}>
+        <div
+          className={`${styles["nav-menu"]} ${sidebar ? styles.active : ""}`}
+        >
           <ul className={styles["nav-menu-items"]}>
             <li className={styles["navbar-toggle"]}>
               <Link to="#" className={`${styles["menu-bars"]}`}>
@@ -82,7 +84,7 @@ function Nav() {
                 </Link>
               </li>
             ) : (
-              <Link to="/Profile" onClick={closeSidebar}>
+              <Link to={`/profile/${user.id}`} onClick={closeSidebar}>
                 <li className={styles["nav-text"]}>
                   <span>
                     <CgIcons.CgProfile /> Profile

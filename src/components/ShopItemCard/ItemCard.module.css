@@ -8,8 +8,7 @@
   justify-content: flex-start;
   overflow: hidden;
   background-color: #323232;
-  overflow: hidden; 
-
+  overflow: hidden;
 }
 
 .products .heading {
@@ -19,11 +18,16 @@
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
-  background: linear-gradient(to right, rgb(13, 115, 119), rgb(20, 255, 236), rgb(13, 115, 119));
+  background: linear-gradient(
+    to right,
+    rgb(13, 115, 119),
+    rgb(20, 255, 236),
+    rgb(13, 115, 119)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   pointer-events: none;
-  margin-top: 0; 
+  margin-top: 0;
 }
 
 .products .search .src {
@@ -31,14 +35,14 @@
   padding: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #0D7377;
+  background-color: #0d7377;
   color: white;
   font-size: 16px;
-  box-shadow:  0 0px 4px 3px rgb(20, 255, 236); 
+  box-shadow: 0 0px 4px 3px rgb(20, 255, 236);
 }
 
 .products .search .src::placeholder {
-  color: #14FFEC; 
+  color: #14ffec;
 }
 
 .products .search .src:focus {
@@ -46,12 +50,12 @@
 }
 
 .products .search {
-  width: 60%; 
+  width: 60%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0 10px; 
+  margin: 0 10px;
 }
 
 .products .box {
@@ -60,7 +64,7 @@
   margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-template-columns: repeat(5, 1fr); 
+  grid-template-columns: repeat(5, 1fr);
   gap: 40px;
   align-items: flex-start;
   justify-items: center;
@@ -74,12 +78,12 @@
   border-radius: 50px;
   text-align: center;
   padding: 0;
-  background: #0D7377;
+  background: #0d7377;
   transition: 0.3s;
   overflow: hidden;
-  border: 2px solid #14FFEC;
+  border: 2px solid #14ffec;
   cursor: pointer;
-  border: 2px solid #14FFEC; 
+  border: 2px solid #14ffec;
 }
 
 .products .box .card:hover {
@@ -115,8 +119,8 @@
 
 .products .box .card .small_card .brand,
 .products .box .card .small_card .os {
-  color: #14FFEC;
-  color: #14FFEC; 
+  color: #14ffec;
+  color: #14ffec;
   font-size: 14px;
 }
 
@@ -126,8 +130,8 @@
   z-index: 0;
 }
 
-.products .box .card:hover + .card:nth-child(n+6),
-.products .box .card:hover + .card:nth-last-child(n+6) {
+.products .box .card:hover + .card:nth-child(n + 6),
+.products .box .card:hover + .card:nth-last-child(n + 6) {
   transform: scale(1);
 }
 
@@ -136,34 +140,29 @@
   width: fit-content;
   margin: 0 auto;
   padding: 10px 20px;
-  border: 3px solid #14FFEC;
+  border: 3px solid #14ffec;
   border-radius: 5px;
   background-color: transparent;
-  color: #14FFEC;
+  color: #14ffec;
   font-size: 16px;
   cursor: pointer;
   box-shadow: 0 0 8px rgb(20, 255, 236); /* Stilul inițial al box-shadow */
   transition: box-shadow 0.3s; /* Tranziție pentru efect de animație */
 }
 
-
 .btn-show:hover {
-  border: 3px solid #0D7377;
-  background-color: #14FFEC;
-  color: #0D7377;
-  box-shadow: 
-  0 0 100px rgba(13, 115, 119, 1),
-  0 0 150px rgba(13, 115, 119, 0.8),
-  0 0 150px rgba(13, 115, 119, 0.7),
-  0 0 200px rgba(13, 115, 119, 0.6), 
-  0 0 250px rgba(13, 115, 119, 0.5) 
+  border: 3px solid #0d7377;
+  background-color: #14ffec;
+  color: #0d7377;
+  box-shadow: 0 0 100px rgba(13, 115, 119, 1), 0 0 150px rgba(13, 115, 119, 0.8),
+    0 0 150px rgba(13, 115, 119, 0.7), 0 0 200px rgba(13, 115, 119, 0.6),
+    0 0 250px rgba(13, 115, 119, 0.5);
 }
-
 
 .searchInput {
   width: 100%;
   max-width: 300px;
-  max-width: 300px; 
+  max-width: 300px;
 }
 
 .searchContainer {

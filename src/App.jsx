@@ -18,7 +18,7 @@ import Profile from "./components/Profile/Profile";
 
 import AcceptCookies from "./components/Cookies/AcceptCookies";
 
-import DeliveryButton from './components/Delivery/DeliveryButton'; 
+import DeliveryButton from "./components/Delivery/DeliveryButton";
 
 import ContactUs from "./components/Contact/ContactUs";
 
@@ -54,7 +54,7 @@ const App = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/:brand/:id" element={<Details phones={phones} />} />
             <Route path="/ClearCache" element={<ClearCache />} />
-            <Route path="/Profile" element={<Profile />} />
+            <Route path="/profile/:id" element={<Profile />} />
           </Routes>
         </Suspense>
         <Footer />
@@ -62,11 +62,11 @@ const App = () => {
         {/* ChatBot Component */}
         <ChatBot />
         {/* Accept Cookies Component */}
-       <AcceptCookies />
-       {/* Delivery Button Component */}
-       <DeliveryButton />
-       {/* Add the ContactUs */}
-       <ContactUs />
+        <AcceptCookies />
+        {/* Delivery Button Component */}
+        <DeliveryButton />
+        {/* Add the ContactUs */}
+        <ContactUs />
       </div>
     </AuthProvider>
   );
