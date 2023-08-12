@@ -3,41 +3,23 @@ import styles from "./ItemCard.module.css";
 import MyContext from "../../Context/MyContext";
 import { useNavigate } from "react-router-dom";
 import Logo from "./img/Logo.jpg";
-
-// Funcție pentru a obține date JSON din API
-export async function logJSONData() {
-  const response = await fetch(
-    "https://parseapi.back4app.com/classes/Dataset_Cell_Phones_Model_Brand?limit=50",
-    {
-      headers: {
-        "X-Parse-Application-Id": "MEqvn3N742oOXsF33z6BFeezRkW8zXXh4nIwOQUT",
-        "X-Parse-Master-Key": "uZ1r1iHnOQr5K4WggIibVczBZSPpWfYbSRpD6INw",
-      },
-    }
-  );
-  const jsonData = await response.json();
-  const phones = jsonData.results.map((item) => ({
-    brand: item.Brand,
-    operatingSystem: item.Operating_System || "Fără sistem de operare!",
-    id: item.objectId,
-  }));
-  return phones;
-}
+import { fetchData, fetchPhoneDetails } from "../../api/api";
 
 function Card() {
   const [phones, setPhones] = useState([]);
-  const [selectedPhone, setSelectedPhones] = useState(null);
+  const [selectedPhone, setSelectedPhone] = useState(null);
   const [visibleCount, setVisibleCount] = useState(25);
   const [showAll, setShowAll] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [filteredPhones, setFilteredPhones] = useState([]);
+  const [selectedPhoneOs, setSelectedPhoneOs] = useState("");
 
   useEffect(() => {
-    async function fetchData() {
-      const phonesData = await logJSONData();
+    async function fetchDataAndSetPhones() {
+      const phonesData = await fetchData();
       setPhones(phonesData);
     }
-    fetchData();
+    fetchDataAndSetPhones();
   }, []);
 
   useEffect(() => {
@@ -48,9 +30,16 @@ function Card() {
   }, [searchValue, phones]);
 
   const navigate = useNavigate();
-  const handleItemClick = (phone) => {
-    setSelectedPhones(phone);
-    navigate(`/${phone.brand}/${phone.id}`);
+  const handleItemClick = async (phone) => {
+    setSelectedPhone(phone);
+
+    const { phoneDetails, operatingSystem } = await fetchPhoneDetails(phone.id);
+
+    if (phoneDetails) {
+      setSelectedPhoneOs(operatingSystem);
+    }
+
+    navigate(`/${phone.device_name}/${phone.id}`);
   };
 
   const handleShowMore = () => {
@@ -98,11 +87,11 @@ function Card() {
                 <img
                   alt="Eroare server"
                   className={styles.img}
-                  src="https://www.shutterstock.com/image-vector/sold-out-red-rubber-stamp-600w-1912854955.jpg"
+                  src={phone.device_image}
                 />
               </div>
               <div className={styles.small_card}>
-                <p className={styles.brand}>{phone.brand}</p>
+                <p className={styles.brand}>{phone.device_name}</p>
                 <p className={styles.os}>{phone.operatingSystem}</p>
               </div>
             </div>

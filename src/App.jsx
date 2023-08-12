@@ -11,15 +11,11 @@ import Card from "./components/ShopItemCard/ItemCard";
 import Footer from "./components/Footer/Footer";
 import { AuthProvider } from "./Context/AuthContext";
 import "./App.css";
-
+import { fetchData } from "./api/api";
 import ChatBot from "./components/ChatBot/ChatBot";
-
 import Profile from "./components/Profile/Profile";
-
 import AcceptCookies from "./components/Cookies/AcceptCookies";
-
 import DeliveryButton from "./components/Delivery/DeliveryButton";
-
 import ContactUs from "./components/Contact/ContactUs";
 
 const About = lazy(() => import("./components/About/about"));
@@ -32,16 +28,14 @@ const App = () => {
   const [phones, setPhones] = useState([]);
 
   useEffect(() => {
-    async function fetchData() {
-      const module = await import("./components/ShopItemCard/ItemCard");
-      const phonesData = await module.logJSONData();
+    async function fetchDataAndSetPhones() {
+      const phonesData = await fetchData();
       startTransition(() => {
         setPhones(phonesData);
       });
     }
-    fetchData();
+    fetchDataAndSetPhones();
   }, []);
-
   return (
     <AuthProvider>
       <div className="App">

@@ -92,8 +92,7 @@ function Profile() {
                 />
               ) : (
                 <>
-                  <br />
-                  <span>{profileData.username}</span>
+                  <span className={styles.info}>{profileData.username}</span>
                 </>
               )}
             </p>
@@ -112,91 +111,7 @@ function Profile() {
                 />
               ) : (
                 <>
-                  <br />
-                  <span>{profileData.email}</span>
-                </>
-              )}
-            </p>
-          </div>
-        </div>
-        <div className={styles.profileContainer2}>
-          <h1 className={styles.heading}>User Profile</h1>
-          <div className={styles.profileInfo}>
-            <p>
-              First Name:
-              <LuIcons.LuEdit className={styles.icon} onClick={handleEdit} />
-              <br />
-              {isEditing ? (
-                <input
-                  type="text"
-                  name="nume"
-                  value={formData.nume}
-                  onChange={handleChange}
-                />
-              ) : (
-                <>
-                  <br />
-                  <span>{profileData.nume}</span>
-                </>
-              )}
-            </p>
-          </div>
-          <div className={styles.profileInfo}>
-            <p>
-              Last Name:
-              <LuIcons.LuEdit className={styles.icon} onClick={handleEdit} />
-              <br />
-              {isEditing ? (
-                <input
-                  type="text"
-                  name="prenume"
-                  value={formData.prenume}
-                  onChange={handleChange}
-                />
-              ) : (
-                <>
-                  <br />
-                  <span>{profileData.prenume}</span>
-                </>
-              )}
-            </p>
-          </div>
-          <div className={styles.profileInfo}>
-            <p>
-              Gender:
-              <LuIcons.LuEdit className={styles.icon} onClick={handleEdit} />
-              <br />
-              {isEditing ? (
-                <input
-                  type="text"
-                  name="gen"
-                  value={formData.gen}
-                  onChange={handleChange}
-                />
-              ) : (
-                <>
-                  <br />
-                  <span>{profileData.gen}</span>
-                </>
-              )}
-            </p>
-          </div>
-          <div className={styles.profileInfo}>
-            <p>
-              Birthdate:
-              <LuIcons.LuEdit className={styles.icon} onClick={handleEdit} />
-              <br />
-              {isEditing ? (
-                <input
-                  type="text"
-                  name="data_nasterii"
-                  value={formData.data_nasterii}
-                  onChange={handleChange}
-                />
-              ) : (
-                <>
-                  <br />
-                  <span>{profileData.data_nasterii}</span>
+                  <span className={styles.info}>{profileData.email}</span>
                 </>
               )}
             </p>
@@ -218,8 +133,7 @@ function Profile() {
                 />
               ) : (
                 <>
-                  <br />
-                  <span>{profileData.tara}</span>
+                  <span className={styles.info}>{profileData.tara}</span>
                 </>
               )}
             </p>
@@ -238,8 +152,7 @@ function Profile() {
                 />
               ) : (
                 <>
-                  <br />
-                  <span>{profileData.strada}</span>
+                  <span className={styles.info}>{profileData.strada}</span>
                 </>
               )}
             </p>
@@ -258,8 +171,7 @@ function Profile() {
                 />
               ) : (
                 <>
-                  <br />
-                  <span>{profileData.numar}</span>
+                  <span className={styles.info}>{profileData.numar}</span>
                 </>
               )}
             </p>
@@ -278,15 +190,99 @@ function Profile() {
                 />
               ) : (
                 <>
-                  <br />
-                  <span>{profileData.suplimentar}</span>
+                  <span className={styles.info}>{profileData.suplimentar}</span>
                 </>
               )}
             </p>
           </div>
         </div>
-        {isEditing && <button onClick={handleSubmit}>Save Changes</button>}
+        <div className={styles.profileContainer2}>
+          <h1 className={styles.heading}>Personal Data</h1>
+          <div className={styles.profileInfo}>
+            <p>
+              First Name:
+              <LuIcons.LuEdit className={styles.icon} onClick={handleEdit} />
+              <br />
+              {isEditing ? (
+                <input
+                  type="text"
+                  name="nume"
+                  value={formData.nume}
+                  onChange={handleChange}
+                />
+              ) : (
+                <>
+                  <span className={styles.info}>{profileData.nume}</span>
+                </>
+              )}
+            </p>
+          </div>
+          <div className={styles.profileInfo}>
+            <p>
+              Last Name:
+              <LuIcons.LuEdit className={styles.icon} onClick={handleEdit} />
+              <br />
+              {isEditing ? (
+                <input
+                  type="text"
+                  name="prenume"
+                  value={formData.prenume}
+                  onChange={handleChange}
+                />
+              ) : (
+                <>
+                  <span className={styles.info}>{profileData.prenume}</span>
+                </>
+              )}
+            </p>
+          </div>
+          <div className={styles.profileInfo}>
+            <p>
+              Gender:
+              <LuIcons.LuEdit className={styles.icon} onClick={handleEdit} />
+              <br />
+              {isEditing ? (
+                <input
+                  type="text"
+                  name="gen"
+                  value={formData.gen}
+                  onChange={handleChange}
+                />
+              ) : (
+                <>
+                  <span className={styles.info}>{profileData.gen}</span>
+                </>
+              )}
+            </p>
+          </div>
+          <div className={styles.profileInfo}>
+            <p>
+              Birthdate:
+              <LuIcons.LuEdit className={styles.icon} onClick={handleEdit} />
+              <br />
+              {isEditing ? (
+                <input
+                  type="text"
+                  name="data_nasterii"
+                  value={formData.data_nasterii}
+                  onChange={handleChange}
+                />
+              ) : (
+                <>
+                  <span className={styles.info}>
+                    {profileData.data_nasterii}
+                  </span>
+                </>
+              )}
+            </p>
+          </div>
+        </div>
       </div>
+      {isEditing && (
+        <button onClick={handleSubmit} className={styles.submit}>
+          Save Changes
+        </button>
+      )}
     </>
   );
 }
