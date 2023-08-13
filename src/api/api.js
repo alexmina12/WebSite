@@ -45,14 +45,15 @@ export async function fetchPhoneDetails(key) {
     "https://script.google.com/macros/s/AKfycbxNu27V2Y2LuKUIQMK8lX1y0joB6YmG6hUwB1fNeVbgzEh22TcDGrOak03Fk3uBHmz-/exec",
     requestOptions
   );
-
   const detailsData = await detailsResponse.json();
 
   if (detailsData && detailsData.data) {
     return {
       phoneDetails: detailsData,
+      release: detailsData.data.release_date,
       operatingSystem: detailsData.data.os_type,
       deviceImage: detailsData.data.device_image,
+      cpu: detailsData.data.chipset,
     };
   } else {
     console.log("Eroare în datele primite de la API sau structura incorectă.");

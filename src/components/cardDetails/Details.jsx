@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./Details.module.css";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { fetchData, fetchPhoneDetails } from "../../api/api";
 
 function Details({ phones }) {
   const { brand, id } = useParams();
@@ -23,7 +24,11 @@ function Details({ phones }) {
     const telefonGasit = phones.find(
       (telefon) => telefon.brand === brand && telefon.id === id
     );
-    setTelefonSelectat(telefonGasit);
+    if (telefonGasit) {
+      fetchPhoneDetails(telefonGasit.id).then((details) => {
+        setTelefonSelectat({ ...telefonGasit, ...details });
+      });
+    }
   }, [phones, brand, id]);
 
   useEffect(() => {
@@ -117,11 +122,14 @@ function Details({ phones }) {
   };
 
   // Lista statică de specificații (aceste date ar trebui să fie obținute dintr-o sursă externă în realitate)
+
   const specificatiiProdus = [
-    { label: "Sistem de operare:", value: "Android" },
-    { label: "Detalii:", value: "Smartphone performant" },
-    { label: "An:", value: "2023" },
-    { label: "Chipset:", value: "Snapdragon 888" },
+    {
+      label: "Sistem de operare:",
+      value: telefonSelectat?.operatingSystem || "N/A",
+    },
+    { label: "Aparitie:", value: telefonSelectat?.release || "N/A" },
+    { label: "Chipset:", value: telefonSelectat?.cpu || "N/A" },
   ];
 
   if (!telefonSelectat) {
@@ -129,162 +137,181 @@ function Details({ phones }) {
   }
 
   return (
-    <div className={styles.productContainer}>
-      <div className={styles.productDetails}>
-        <h2>{telefonSelectat.brand}</h2>
-
-        <div className={styles.specificationsContainer}>
-          {specificatiiProdus.map((specificatie, index) => (
-            <div key={index} className={styles.specificationItem}>
-              <span className={styles.specificationLabel}>
-                {specificatie.label}
-              </span>
-              <span className={styles.specificationValue}>
-                {specificatie.value}
-              </span>
+    <>
+      <div className={styles.productContainer}>
+        <div className={styles.productDetails}>
+          <div className={styles.box}>
+            <h2>{telefonSelectat?.device_name}</h2>
+            <img
+              src={telefonSelectat.device_image}
+              alt={telefonSelectat.brand}
+            />
+          </div>
+          <div className={styles.specificationsContainer}>
+            {specificatiiProdus.map((specificatie, index) => (
+              <div key={index} className={styles.specificationItem}>
+                <span className={styles.specificationLabel}>
+                  {specificatie.label}
+                </span>
+                <span className={styles.specificationValue}>
+                  {specificatie.value}
+                </span>
+              </div>
+            ))}
+          </div>
+          <div className={styles.quantity}>
+            <div className={styles.quantityBtnContainer}>
+              <button
+                className={styles.quantityBtn}
+                onClick={micsoreazaCantitate}
+              >
+                -
+              </button>
+              <button className={styles.quantityBtn} onClick={maresteCantitate}>
+                +
+              </button>
             </div>
-          ))}
-        </div>
+            <div className={styles.quantityDisplay}>{cantitate}</div>
+          </div>
 
-        <div className={styles.quantity}>
-          <button className={styles.quantityBtn} onClick={micsoreazaCantitate}>
-            -
-          </button>
-          <span className={styles.quantityDisplay}>{cantitate}</span>
-          <button className={styles.quantityBtn} onClick={maresteCantitate}>
-            +
-          </button>
-        </div>
-        {adaugatInCos ? (
-          <div>
-            <button className={styles.removeFromCartBtn} onClick={scoateDinCos}>
+          {adaugatInCos ? (
+            <div>
+              <button
+                className={styles.removeFromCartBtn}
+                onClick={scoateDinCos}
+              >
+                <span className={styles.cartIcon}>
+                  <ShoppingCartIcon />
+                </span>{" "}
+                Scoate din Coș
+              </button>
+              <button
+                className={styles.proceedToPaymentBtn}
+                onClick={deschidePlata}
+              >
+                Procedează la Plată
+              </button>
+            </div>
+          ) : (
+            <button className={styles.addToCartBtn} onClick={adaugaInCos}>
               <span className={styles.cartIcon}>
                 <ShoppingCartIcon />
               </span>{" "}
-              Scoate din Coș
+              Adaugă în Coș
             </button>
-            <button
-              className={styles.proceedToPaymentBtn}
-              onClick={deschidePlata}
-            >
-              Procedează la Plată
-            </button>
-          </div>
-        ) : (
-          <button className={styles.addToCartBtn} onClick={adaugaInCos}>
-            <span className={styles.cartIcon}>
-              <ShoppingCartIcon />
-            </span>{" "}
-            Adaugă în Coș
-          </button>
-        )}
-
-        {adaugatInCos && afiseazaPlata && (
-          <div className={styles.paymentContainer}>
-            <h3>Alege Metoda de Livrare:</h3>
-            <label>
-              <input
-                type="radio"
-                value="standard"
-                checked={metodaLivrare === "standard"}
-                onChange={schimbaMetodaLivrare}
-              />
-              Livrare Standard
-            </label>
-            <label>
-              <input
-                type="radio"
-                value="express"
-                checked={metodaLivrare === "express"}
-                onChange={schimbaMetodaLivrare}
-              />
-              Livrare Express
-            </label>
-            <label>
-              <input
-                type="radio"
-                value="store_pickup"
-                checked={metodaLivrare === "store_pickup"}
-                onChange={schimbaMetodaLivrare}
-              />
-              Ridicare din Magazin
-            </label>
-            {metodaLivrare === "express" && (
-              <div>
-                <h3>Informații Livrare:</h3>
+          )}
+          {adaugatInCos && afiseazaPlata && (
+            <div className={styles.paymentContainer}>
+              <h3>Alege Metoda de Livrare:</h3>
+              <label>
                 <input
-                  type="text"
-                  placeholder="Nume"
-                  name="nume"
-                  value={informatiiLivrare.nume}
-                  onChange={schimbaInformatiiLivrare}
+                  type="radio"
+                  value="standard"
+                  checked={metodaLivrare === "standard"}
+                  onChange={schimbaMetodaLivrare}
                 />
+                Livrare Standard
+              </label>
+              <label>
                 <input
-                  type="text"
-                  placeholder="Adresă"
-                  name="adresa"
-                  value={informatiiLivrare.adresa}
-                  onChange={schimbaInformatiiLivrare}
+                  type="radio"
+                  value="express"
+                  checked={metodaLivrare === "express"}
+                  onChange={schimbaMetodaLivrare}
                 />
+                Livrare Express
+              </label>
+              <label>
                 <input
-                  type="tel"
-                  placeholder="Telefon"
-                  name="telefon"
-                  value={informatiiLivrare.telefon}
-                  onChange={(event) => {
-                    const { value } = event.target;
-                    // Verificați dacă inputul conține doar cifre folosind o expresie regulată
-                    if (/^\d*$/.test(value)) {
-                      // Dacă inputul conține doar cifre, actualizați starea
-                      schimbaInformatiiLivrare(event);
-                    }
-                  }}
-                  pattern="[0-9]*" // Permite doar cifre
-                  maxLength="10" // Lungime maximă de 10 caractere (cifre)
+                  type="radio"
+                  value="store_pickup"
+                  checked={metodaLivrare === "store_pickup"}
+                  onChange={schimbaMetodaLivrare}
                 />
-              </div>
-            )}
-            {metodaLivrare === "store_pickup" && (
-              <div>
-                <h3>Informații Ridicare din Magazin:</h3>
-                <p>Disponibil pentru ridicare la locația magazinului nostru.</p>
-              </div>
-            )}
-            <h3>Alege Metoda de Plată:</h3>
-            <label>
-              <input
-                type="radio"
-                value="card"
-                checked={metodaPlata === "card"}
-                onChange={schimbaMetodaPlata}
-              />
-              Plată cu Cardul
-            </label>
-            <label>
-              <input
-                type="radio"
-                value="cash"
-                checked={metodaPlata === "cash"}
-                onChange={schimbaMetodaPlata}
-              />
-              Plată la Livrare
-            </label>
-            <p>Sumă Totală: {sumaTotala.toFixed(2)} lei</p>
-            <button
-              className={styles.finishPaymentBtn}
-              onClick={finalizeazaPlata}
-            >
-              Finalizează Plata
-            </button>
-          </div>
-        )}
-        {adaugatInCos && !afiseazaPlata && (
-          <p className={styles.feedbackMessage}>
-            Produsul a fost adăugat în coș!
-          </p>
-        )}
+                Ridicare din Magazin
+              </label>
+              {metodaLivrare === "express" && (
+                <div>
+                  <h3>Informații Livrare:</h3>
+                  <input
+                    type="text"
+                    placeholder="Nume"
+                    name="nume"
+                    value={informatiiLivrare.nume}
+                    onChange={schimbaInformatiiLivrare}
+                  />
+                  <input
+                    type="text"
+                    placeholder="Adresă"
+                    name="adresa"
+                    value={informatiiLivrare.adresa}
+                    onChange={schimbaInformatiiLivrare}
+                  />
+                  <input
+                    type="tel"
+                    placeholder="Telefon"
+                    name="telefon"
+                    value={informatiiLivrare.telefon}
+                    onChange={(event) => {
+                      const { value } = event.target;
+                      // Verificați dacă inputul conține doar cifre folosind o expresie regulată
+                      if (/^\d*$/.test(value)) {
+                        // Dacă inputul conține doar cifre, actualizați starea
+                        schimbaInformatiiLivrare(event);
+                      }
+                    }}
+                    pattern="[0-9]*" // Permite doar cifre
+                    maxLength="10" // Lungime maximă de 10 caractere (cifre)
+                  />
+                </div>
+              )}
+              {metodaLivrare === "store_pickup" && (
+                <div>
+                  <h3>Informații Ridicare din Magazin:</h3>
+                  <p>
+                    Disponibil pentru ridicare la locația magazinului nostru.
+                  </p>
+                </div>
+              )}
+              <h3>Alege Metoda de Plată:</h3>
+              <label>
+                <input
+                  type="radio"
+                  value="card"
+                  checked={metodaPlata === "card"}
+                  onChange={schimbaMetodaPlata}
+                />
+                Plată cu Cardul
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  value="cash"
+                  checked={metodaPlata === "cash"}
+                  onChange={schimbaMetodaPlata}
+                />
+                Plată la Livrare
+              </label>
+              <p>Sumă Totală: {sumaTotala.toFixed(2)} lei</p>
+              <button
+                className={styles.finishPaymentBtn}
+                onClick={finalizeazaPlata}
+              >
+                Finalizează Plata
+              </button>
+            </div>
+          )}
+          {adaugatInCos && !afiseazaPlata && (
+            <p className={styles.feedbackMessage}>
+              Produsul a fost adăugat în coș!
+            </p>
+          )}
+        </div>
+        <div className={styles.specs}>
+          <h3>Specs</h3>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

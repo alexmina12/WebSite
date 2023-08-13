@@ -73,7 +73,7 @@
 .products .box .card {
   width: 100%;
   max-width: 300px;
-  height: 450px;
+  height: 350px;
   box-shadow: 0 0 8px rgb(20, 255, 236);
   border-radius: 50px;
   text-align: center;
@@ -111,10 +111,7 @@
 
 .products .box .card .small_card {
   height: 40%;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: center;
+  padding-top: 15px;
 }
 
 .products .box .card .small_card .brand,
@@ -172,6 +169,14 @@
   margin-bottom: 16px;
 }
 
+.img {
+  width: fit-content;
+  border-radius: 10px;
+  padding: 8px 100px 0 100px;
+  margin: auto;
+  background-color: white;
+}
+
 @media (max-width: 768px) {
   .products .box {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -194,11 +199,4 @@
     max-width: 250px;
     height: 400px;
   }
-}
-
-.img {
-  width: fit-content;
-  border-radius: 10px;
-  margin-top: 5px;
-  padding: 0;
 }

@@ -93,6 +93,7 @@ function Card() {
               <div className={styles.small_card}>
                 <p className={styles.brand}>{phone.device_name}</p>
                 <p className={styles.os}>{phone.operatingSystem}</p>
+                <p>Click pentru detalii</p>
               </div>
             </div>
           ))}
