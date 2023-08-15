@@ -3,7 +3,7 @@ import styles from "./ItemCard.module.css";
 import MyContext from "../../Context/MyContext";
 import { useNavigate } from "react-router-dom";
 import Logo from "./img/Logo.jpg";
-import { fetchData, fetchPhoneDetails } from "../../api/api";
+import { fetchData, fetchPhoneDetails, fetchAllBrands } from "../../api/api";
 
 function Card() {
   const [phones, setPhones] = useState([]);
@@ -15,16 +15,17 @@ function Card() {
   const [selectedPhoneOs, setSelectedPhoneOs] = useState("");
 
   useEffect(() => {
-    async function fetchDataAndSetPhones() {
+    async function fetchPhonesData() {
       const phonesData = await fetchData();
       setPhones(phonesData);
+      setFilteredPhones(phonesData);
     }
-    fetchDataAndSetPhones();
+    fetchPhonesData();
   }, []);
 
   useEffect(() => {
     const filtered = phones.filter((phone) =>
-      phone.brand.toLowerCase().includes(searchValue.toLowerCase())
+      phone.device_name.toLowerCase().includes(searchValue.toLowerCase())
     );
     setFilteredPhones(filtered);
   }, [searchValue, phones]);

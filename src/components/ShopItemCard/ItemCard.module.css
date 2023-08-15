@@ -83,7 +83,6 @@
   overflow: hidden;
   border: 2px solid #14ffec;
   cursor: pointer;
-  border: 2px solid #14ffec;
 }
 
 .products .box .card:hover {
@@ -157,20 +156,16 @@
 }
 
 .searchInput {
-  width: 100%;
-  max-width: 300px;
   max-width: 300px;
 }
 
 .searchContainer {
-  width: 100%;
   display: flex;
   justify-content: center;
   margin-bottom: 16px;
 }
 
 .img {
-  width: fit-content;
   border-radius: 10px;
   padding: 8px 100px 0 100px;
   margin: auto;
@@ -191,12 +186,38 @@
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .products .box {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    width: 95%;
     gap: 15px;
+    display: flex;
+    flex-direction: column;
   }
 
   .products .box .card {
-    max-width: 250px;
-    height: 400px;
+    height: 220px;
+    max-width: 99%;
+    display: flex;
+    border: none;
+    box-shadow: none;
+    border: 2px solid rgba(0, 0, 0, 0);
+    margin-bottom: 1px;
+  }
+
+  .products .box .card:hover {
+    transform: none;
+    box-shadow: 0 0 15px rgb(20, 255, 236);
+    border: 2px solid #14ffec;
+    transition: none;
+  }
+
+  .img {
+    padding: 10px 10px 10px 20px;
+    margin: 0;
+    width: fit-content;
+  }
+
+  .products .box .card .image {
+    width: fit-content;
+    display: flex;
+    justify-content: flex-start;
   }
 }
