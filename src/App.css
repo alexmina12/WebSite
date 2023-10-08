@@ -3,9 +3,11 @@
   margin: auto;
 }
 
-@media (min-width: 481px) and (max-width: 767px) {
+@media (min-width: 0px) and (max-width: 1024px) {
   .App {
     border-radius: 10px;
-    background-color: white;
+  }
+  html {
+    background-color: #212121;
   }
 }

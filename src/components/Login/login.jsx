@@ -9,7 +9,8 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginStatus, setLoginStatus] = useState("");
-  const { isLoggedIn, setIsLoggedIn, setUser } = useContext(AuthContext); // Adăugăm `setUser` în context pentru a actualiza starea `user`
+  const { isLoggedIn, setIsLoggedIn, setUser } = useContext(AuthContext);
+  // Adăugăm `setUser` în context pentru a actualiza starea `user`
   const navigate = useNavigate();
 
   useEffect(() => {

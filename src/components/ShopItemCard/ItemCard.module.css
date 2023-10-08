@@ -7,8 +7,8 @@
   align-items: center;
   justify-content: flex-start;
   overflow: hidden;
-  background-color: #323232;
-  overflow: hidden;
+  /* background-color: #323232; */
+  background-image: url("../../../src/cloud.jpg");
 }
 
 .products .heading {
@@ -172,7 +172,7 @@
   background-color: white;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .products .box {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 10px;
@@ -182,24 +182,27 @@
     max-width: 200px;
     height: 350px;
   }
-}
+} */
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 0px) and (max-width: 1024px) {
   .products .box {
-    width: 95%;
-    gap: 15px;
     display: flex;
     flex-direction: column;
+    gap: 15px;
+    align-items: center;
   }
 
   .products .box .card {
-    height: 220px;
-    max-width: 99%;
+    width: 90vw;
+    max-width: 1000px;
+    height: 36vw;
+    max-height: 926px;
     display: flex;
     border: none;
     box-shadow: none;
     border: 2px solid rgba(0, 0, 0, 0);
-    margin-bottom: 1px;
+    overflow: visible;
+    border-radius: 0 30px 30px 0;
   }
 
   .products .box .card:hover {
@@ -210,14 +213,26 @@
   }
 
   .img {
-    padding: 10px 10px 10px 20px;
-    margin: 0;
-    width: fit-content;
+    padding: 10px 20px 10px 60px;
+    margin: 0 0 0 -50px;
+    transform: scale(0.6);
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .products .box .card .image {
     width: fit-content;
     display: flex;
     justify-content: flex-start;
+  }
+
+  .logo {
+    width: 95vw;
+    max-width: 1000px;
+    max-height: 926px;
+    height: 50vw;
+    margin-bottom: 10px;
   }
 }
