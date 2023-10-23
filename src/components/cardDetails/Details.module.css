@@ -6,6 +6,11 @@
   flex-wrap: wrap;
 }
 
+.specs hr {
+  background-color: rgba(20, 255, 236, 0.5);
+  height: 1px;
+}
+
 .productDetails,
 .specs {
   max-width: 800px;

@@ -135,7 +135,7 @@ function Details({ phones }) {
   if (!telefonSelectat) {
     return <p>Telefonul nu a fost găsit.</p>;
   }
-
+  const display = telefonSelectat?.display || [];
   return (
     <>
       <div className={styles.productContainer}>
@@ -309,6 +309,13 @@ function Details({ phones }) {
         </div>
         <div className={styles.specs}>
           <h3>Specs</h3>
+          <div>
+            <h4>Display</h4>
+            <p>{telefonSelectat.display_type}</p>
+            <p>{telefonSelectat.display_size}</p>
+            <p>{telefonSelectat.display_res}</p>
+          </div>
+          <hr></hr>
         </div>
       </div>
     </>
