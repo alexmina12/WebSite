@@ -4,6 +4,7 @@ import MyContext from "../../Context/MyContext";
 import { useNavigate } from "react-router-dom";
 import Logo from "./img/Logo.jpg";
 import { fetchData, fetchPhoneDetails, fetchAllBrands } from "../../api/api";
+import * as AiIcons from "react-icons/ai";
 
 function Card() {
   const [phones, setPhones] = useState([]);
@@ -62,19 +63,24 @@ function Card() {
       <div className={styles.products}>
         <img src={Logo} alt="Logo" className={styles.logo} />
         <h1 className={styles.heading}>Produse</h1>
-        <div className={styles.search}>
-          <div className={styles.searchContainer}>
-            <div className={styles.search}>
-              <input
-                className={styles.src}
-                type="text"
-                placeholder="Caută..."
-                value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
-              />
-            </div>
+        <div className={styles.searchContainer}>
+          <div className={styles.search}>
+            <input
+              className={styles.src}
+              type="text"
+              placeholder="Caută..."
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
+          </div>
+          <div className={styles.filter}>
+            <button className={styles.filterButton}>Filter</button>
+            <AiIcons.AiFillFilter
+              className={styles.filter_icon}
+            ></AiIcons.AiFillFilter>
           </div>
         </div>
+
         <div className={styles.box}>
           {visiblePhones.map((phone, objectId) => (
             <div

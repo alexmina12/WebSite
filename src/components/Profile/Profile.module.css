@@ -107,7 +107,7 @@ div {
   font-family: "Times New Roman", Times, serif;
 }
 
-input {
+.profileInfo input {
   font-weight: bolder;
   margin-top: 10px;
   border-radius: 6px;

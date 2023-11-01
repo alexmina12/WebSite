@@ -1,5 +1,5 @@
 .products {
-  width: 100%;
+  /* width: 100%; */
   min-height: 100vh;
   padding: 25px 0;
   display: flex;
@@ -7,8 +7,33 @@
   align-items: center;
   justify-content: flex-start;
   overflow: hidden;
-  /* background-color: #323232; */
-  background-image: url("../../../src/cloud.jpg");
+  /* background-image: url("../../../src/cloud.jpg"); */
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.filter button {
+  background-color: transparent;
+  border: none;
+}
+
+.filter {
+  display: flex;
+  margin-left: -6%;
+  margin-right: 6px;
+  height: 30px;
+  padding: auto;
+}
+
+.filter:hover {
+  scale: 1.1;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.filter_icon {
+  color: red;
+  margin: auto 2px;
 }
 
 .products .heading {
@@ -31,7 +56,6 @@
 }
 
 .products .search .src {
-  width: 80%;
   padding: 10px;
   border: none;
   border-radius: 5px;
@@ -50,21 +74,23 @@
 }
 
 .products .search {
-  width: 60%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0 10px;
+}
+
+.search {
+  margin: 4px auto;
 }
 
 .products .box {
-  width: 100%;
+  width: 96%;
   max-width: 1200px;
   margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-template-columns: repeat(5, 1fr);
+  /* grid-template-columns: repeat(5, 1fr); */
   gap: 40px;
   align-items: flex-start;
   justify-items: center;
@@ -78,7 +104,6 @@
   border-radius: 50px;
   text-align: center;
   padding: 0;
-  background: #0d7377;
   transition: 0.3s;
   overflow: hidden;
   border: 2px solid #14ffec;
@@ -98,6 +123,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  transform: scale(0.85);
 }
 
 .products .box .card .image {
@@ -109,8 +135,10 @@
 }
 
 .products .box .card .small_card {
-  height: 40%;
+  height: 80%;
   padding-top: 15px;
+  background: #0d7377;
+  /* width: 80%; */
 }
 
 .products .box .card .small_card .brand,
@@ -142,8 +170,8 @@
   color: #14ffec;
   font-size: 16px;
   cursor: pointer;
-  box-shadow: 0 0 8px rgb(20, 255, 236); /* Stilul inițial al box-shadow */
-  transition: box-shadow 0.3s; /* Tranziție pentru efect de animație */
+  box-shadow: 0 0 8px rgb(20, 255, 236);
+  transition: box-shadow 0.3s;
 }
 
 .btn-show:hover {
@@ -161,15 +189,19 @@
 
 .searchContainer {
   display: flex;
-  justify-content: center;
-  margin-bottom: 16px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: silver;
+  width: 100%;
+  max-width: 1200px;
+  padding: 2px 0;
 }
 
 .img {
   border-radius: 10px;
   padding: 8px 100px 0 100px;
   margin: auto;
-  background-color: white;
+  background-color: transparent;
 }
 
 /* @media (max-width: 768px) {
@@ -184,32 +216,30 @@
   }
 } */
 
-@media (min-width: 0px) and (max-width: 1024px) {
+@media (min-width: 481px) and (max-width: 1024px) {
   .products .box {
     display: flex;
     flex-direction: column;
-    gap: 15px;
     align-items: center;
   }
 
   .products .box .card {
-    width: 90vw;
+    width: 80vw;
     max-width: 1000px;
-    height: 36vw;
+    height: 20vw;
     max-height: 926px;
     display: flex;
     border: none;
-    box-shadow: none;
-    border: 2px solid rgba(0, 0, 0, 0);
-    overflow: visible;
+    /* transform: 0.3s; */
+    box-shadow: 0 0 15px rgb(20, 255, 236);
+    border: 2px solid #14ffec;
+    transition: none;
     border-radius: 0 30px 30px 0;
   }
 
   .products .box .card:hover {
-    transform: none;
-    box-shadow: 0 0 15px rgb(20, 255, 236);
-    border: 2px solid #14ffec;
-    transition: none;
+    transform: scale(1.07);
+    transition: 0.5s;
   }
 
   .img {
@@ -234,5 +264,36 @@
     max-height: 926px;
     height: 50vw;
     margin-bottom: 10px;
+  }
+
+  .products .box .card .small_card {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (min-width: 0px) and (max-width: 480px) {
+  .products {
+    margin: 0;
+  }
+
+  .products .box {
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    margin: 0 auto;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .searchContainer {
+    margin-bottom: 50px;
+  }
+
+  .logo {
+    width: 120vw;
+    height: 60vw;
+  }
+
+  .products .box .card {
+    border-radius: 10px;
   }
 }

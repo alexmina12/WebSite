@@ -1,9 +1,13 @@
 .nav-bar {
+  width: 100%;
+  position: fixed;
   height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
+  background-color: #212121;
+  z-index: 12;
 }
 
 .nav-menu {

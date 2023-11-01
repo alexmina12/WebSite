@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import styles from "./Details.module.css";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { fetchData, fetchPhoneDetails } from "../../api/api";
+import * as BiIcons from "react-icons/bi";
 
 function Details({ phones }) {
   const { brand, id } = useParams();
@@ -120,8 +121,6 @@ function Details({ phones }) {
     setAfiseazaPlata(false);
     alert("Plată efectuată cu succes!\n\n" + mesajPlataFinalizata);
   };
-
-  // Lista statică de specificații (aceste date ar trebui să fie obținute dintr-o sursă externă în realitate)
 
   const specificatiiProdus = [
     {
@@ -254,14 +253,12 @@ function Details({ phones }) {
                     value={informatiiLivrare.telefon}
                     onChange={(event) => {
                       const { value } = event.target;
-                      // Verificați dacă inputul conține doar cifre folosind o expresie regulată
                       if (/^\d*$/.test(value)) {
-                        // Dacă inputul conține doar cifre, actualizați starea
                         schimbaInformatiiLivrare(event);
                       }
                     }}
-                    pattern="[0-9]*" // Permite doar cifre
-                    maxLength="10" // Lungime maximă de 10 caractere (cifre)
+                    pattern="[0-9]*"
+                    maxLength="10"
                   />
                 </div>
               )}
@@ -307,8 +304,24 @@ function Details({ phones }) {
             </p>
           )}
         </div>
+
         <div className={styles.specs}>
           <h3>Specs</h3>
+          <div className={styles.details}>
+            <p>
+              Body{" "}
+              <BiIcons.BiSolidDownArrow
+                className={styles.down}
+              ></BiIcons.BiSolidDownArrow>
+            </p>
+
+            <p>Display</p>
+            <p>OS</p>
+            <p>Storage and RAM</p>
+            <p>Back cameras</p>
+            <p>Front cameras</p>
+            <p>Battery</p>
+          </div>
         </div>
       </div>
     </>
