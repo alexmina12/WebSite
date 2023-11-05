@@ -1,0 +1,134 @@
+.container {
+  width: 260px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #0D7377;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.heading {
+  color: #f1f1f1;
+  font-size: 30px;
+  margin-top: 0px;
+  margin-bottom: 30px;
+}
+
+.formGroup {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.label {
+  color: #f1f1f1;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 0 10px 0;
+  font-size: 14px;
+  border: 2px solid #212121;
+  border-radius: 6px;
+  background-color: #323232;
+  color: #f1f1f1;
+  transition: border-color 0.3s ease;
+  text-align: center;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #ff4da6;
+}
+
+.invisible {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeIn 0.5s ease;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #ff4da6;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(255, 77, 166, 0.7);
+  box-shadow: 0 0 10px rgba(255, 77, 166, 0.5);
+}
+
+.btn:hover {
+  background-color: #007bff;
+  text-shadow: 2px 2px 4px rgba(0, 123, 255, 0.7);
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.7);
+}
+
+.errorMsg {
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  padding-top: 10px;
+  text-align: center;
+  padding-bottom: 8px;
+  text-shadow: 1px 2px 4px rgb(245, 151, 151);
+  animation: highlightAnimation 0.5s infinite alternate;
+}
+
+.inputContainer {
+  position: relative;
+  margin-top: 15px;
+}
+
+.error {
+  border-color: #ff0707;
+}
+
+.formGroup.error {
+  position: relative;
+}
+
+.completionMsg {
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  padding-bottom: 10px;
+  text-shadow: 0 0 0 transparent; 
+  animation: highlightAnimation 1s infinite alternate;
+}
+
+@keyframes highlightAnimation {
+  from {
+    text-shadow: 0 0 0 transparent, 0 0 8px rgba(253, 0, 0, 0.6); 
+  }
+  25% {
+    text-shadow: 0 0 10px rgba(253, 0, 0, 0.7); 
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(253, 0, 0, 0.8); 
+  }
+  75% {
+    text-shadow: 0 0 25px rgba(253, 0, 0, 0.9); 
+  }
+  to {
+    text-shadow: 0 0 50px rgb(250, 4, 4); 
+  }
+}

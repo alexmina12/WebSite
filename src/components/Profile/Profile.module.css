@@ -1,0 +1,182 @@
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+html {
+  color: darkturquoise;
+}
+
+h1 {
+  padding: 0 30px;
+}
+
+div {
+  z-index: 10;
+}
+
+.profile {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+.profileContainer1,
+.profileContainer2,
+.profileContainer3 {
+  position: relative;
+  background-color: #323232;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-top: 5%;
+}
+
+.profileContainer1::before,
+.profileContainer2::before,
+.profileContainer3::before,
+.profileContainer1::after,
+.profileContainer2::after,
+.profileContainer3::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+}
+
+/* .profileContainer1::before,
+.profileContainer2::before,
+.profileContainer3::before {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 3px solid transparent;
+  border-image: linear-gradient(
+    var(--rotate),
+    #14ffec 3%,
+    #212121 43%,
+    #212121 100%
+  );
+  border-image-slice: 1;
+  border-image-width: 3%;
+  animation: spin 3s linear infinite;
+} */
+
+.profileContainer1::after,
+.profileContainer2::after,
+.profileContainer3::after {
+  bottom: -3px;
+  right: -3px;
+  width: 100%;
+  height: 100%;
+  border: 3px solid transparent;
+  border-image: linear-gradient(
+    var(--rotate),
+    #14ffec 3%,
+    #212121 43%,
+    #212121 100%
+  );
+  border-image-slice: 1;
+  border-image-width: 3%;
+  animation: spin 3s linear infinite;
+  z-index: -1;
+}
+
+/* Animatie pentru mișcarea liniei */
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+.icon {
+  color: red;
+  font-size: 16px;
+  cursor: pointer;
+  padding-left: 3px;
+}
+
+.icon:hover {
+  font-size: 18px;
+  text-align: center;
+}
+
+.info {
+  color: rgb(255, 255, 255);
+  font-family: "Times New Roman", Times, serif;
+}
+
+.profileInfo input {
+  font-weight: bolder;
+  margin-top: 10px;
+  border-radius: 6px;
+  border: none;
+  text-align: center;
+  background-image: repeating-linear-gradient(
+    90deg,
+    #14ffeb69 0%,
+    #21212170 10%,
+    #14ffeb69 20%,
+    #21212170 30%,
+    #14ffeb69 40%,
+    #21212170 50%,
+    #14ffeb69 60%,
+    #21212170 70%,
+    #14ffeb69 80%,
+    #21212170 90%,
+    #14ffeb69 100%
+  );
+}
+
+button.submit {
+  display: grid;
+  margin: auto;
+}
+
+/* @media (max-width: 480px) {
+  body {
+    background-color: red;
+  }
+} */
+
+/* Media Query for low resolution  Tablets, Ipads */
+@media (min-width: 481px) and (max-width: 767px) {
+  body {
+    background-color: #14ffeb69;
+  }
+
+  .profile {
+    display: grid;
+    gap: 20px;
+  }
+
+  .profileContainer1,
+  .profileContainer2,
+  .profileContainer3 {
+    width: 326px;
+  }
+}
+
+/* Media Query for Tablets Ipads portrait mode */
+/* @media (min-width: 768px) and (max-width: 1024px) {
+  body {
+    background-color: blue;
+  }
+} */
+
+/* Media Query for Laptops and Desktops */
+/* @media (min-width: 1025px) and (max-width: 1280px) {
+  body {
+    background-color: green;
+  }
+} */
+
+/* Media Query for Large screens */
+/* @media (min-width: 1281px) {
+  body {
+    background-color: white;
+  }
+} */
