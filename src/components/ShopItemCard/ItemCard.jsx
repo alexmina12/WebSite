@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./ItemCard.module.css";
 import MyContext from "../../Context/MyContext";
 import { useNavigate } from "react-router-dom";
-// import Logo from "./img/Logo.jpg";
+import Logo from "./img/Logo.jpg";
 import { fetchData, fetchPhoneDetails } from "../../api/api";
 import * as AiIcons from "react-icons/ai";
 

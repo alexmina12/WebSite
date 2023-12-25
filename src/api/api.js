@@ -114,7 +114,7 @@ export async function fetchPhoneDetails(key) {
       };
     } else {
       throw new Error(
-        "Eroare în datele primite de la API sau structura incorectă."
+        "Eroare în datele primite de la API sau structura incorectă"
       );
     }
   } catch (error) {
