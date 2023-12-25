@@ -52,14 +52,37 @@ export async function fetchPhoneDetails(key) {
     };
 
     const detailsResponse = await fetch(API_URL, requestOptions);
+
     const detailsData = await detailsResponse.json();
+    // console.log("detailsData:", detailsData);
+
+    // console.log("detailsData structure:", typeof detailsData, detailsData);
+
+    // console.log("prices:", detailsData.data.prices);
+
+    const storage = detailsData.data.storage.slice(
+      0,
+      detailsData.data.storage.indexOf(" ")
+    );
+    const values = storage.split("/");
+    console.log(values);
+    // console.log(storage)
+
+    // const storageConfig = "256GB 8GB RAM";
+
+    const priceData = detailsData?.data?.prices?.["256GB 8GB RAM"]?.[0]?.price;
+    console.log("priceData:", priceData);
+
+    if (detailsData?.status !== 200 || !detailsData?.data) {
+      throw new Error("Error in API response or incorrect structure.");
+    }
 
     if (detailsData && detailsData.data) {
       const display = detailsData.data.more_specification.find(
         (item) => item.title === "Display"
       );
 
-      const displaytType =
+      const displayType =
         display.data.find((item) => item.title === "Type")?.data[0] || "N/A";
 
       const displaySize =
@@ -68,6 +91,14 @@ export async function fetchPhoneDetails(key) {
       const displayResolution =
         display.data.find((item) => item.title === "Resolution")?.data[0] ||
         "N/A";
+      // const priceData = (
+      //   detailsData.data.more_specification.find(
+      //     (spec) => spec.title === "Misc"
+      //   ) || {
+      //     data: [{ title: "Price", data: ["N/A"] }],
+      //   }
+      // ).data.find((info) => info.title === "Price").data[0];
+      // const priceInDollars = priceData.split(" / ")[0];
 
       return {
         phoneDetails: detailsData,
@@ -77,7 +108,9 @@ export async function fetchPhoneDetails(key) {
         cpu: detailsData.data.chipset,
         display_size: displaySize,
         display_res: displayResolution,
-        display_type: displaytType,
+        display_type: displayType,
+        prices: priceData,
+        storageCapacity: values,
       };
     } else {
       throw new Error(

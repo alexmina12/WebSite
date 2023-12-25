@@ -2,18 +2,19 @@ import React, { useEffect, useState } from "react";
 import styles from "./ItemCard.module.css";
 import MyContext from "../../Context/MyContext";
 import { useNavigate } from "react-router-dom";
-import Logo from "./img/Logo.jpg";
+// import Logo from "./img/Logo.jpg";
 import { fetchData, fetchPhoneDetails } from "../../api/api";
 import * as AiIcons from "react-icons/ai";
 
 function Card() {
   const [phones, setPhones] = useState([]);
   const [selectedPhone, setSelectedPhone] = useState(null);
-  const [visibleCount, setVisibleCount] = useState(25);
+  const [visibleCount, setVisibleCount] = useState(24);
   const [showAll, setShowAll] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [filteredPhones, setFilteredPhones] = useState([]);
-  const [selectedPhoneOs, setSelectedPhoneOs] = useState("");
+  // const [selectedPhoneOs, setSelectedPhoneOs] = useState("");
+  const [filter, setFilter] = useState(false);
 
   useEffect(() => {
     async function fetchPhonesData() {
@@ -38,19 +39,23 @@ function Card() {
     const { phoneDetails, operatingSystem } = await fetchPhoneDetails(phone.id);
 
     if (phoneDetails) {
-      setSelectedPhoneOs(operatingSystem);
+      setSelectedPhone({
+        ...phone,
+        details: phoneDetails,
+        os: operatingSystem,
+      });
     }
 
     navigate(`/${phone.device_name}/${phone.id}`);
   };
 
   const handleShowMore = () => {
-    setVisibleCount(visibleCount + 25);
+    setVisibleCount(visibleCount + 24);
     setShowAll(true);
   };
 
   const handleShowLess = () => {
-    setVisibleCount(25);
+    setVisibleCount(24);
     setShowAll(false);
   };
 
@@ -58,10 +63,15 @@ function Card() {
     ? filteredPhones
     : filteredPhones.slice(0, visibleCount);
 
+  const filters = () => {
+    console.log("work");
+    setFilter(true);
+  };
+
   return (
     <MyContext.Provider value={phones}>
       <div className={styles.products}>
-        <img src={Logo} alt="Logo" className={styles.logo} />
+        {/* <img src={Logo} alt="Logo" className={styles.logo} /> */}
         <h1 className={styles.heading}>Produse</h1>
         <div className={styles.searchContainer}>
           <div className={styles.search}>
@@ -73,36 +83,45 @@ function Card() {
               onChange={(e) => setSearchValue(e.target.value)}
             />
           </div>
-          <div className={styles.filter}>
+          <div className={styles.filter} onClick={() => setFilter(!filter)}>
             <button className={styles.filterButton}>Filter</button>
             <AiIcons.AiFillFilter
               className={styles.filter_icon}
             ></AiIcons.AiFillFilter>
           </div>
         </div>
-
-        <div className={styles.box}>
-          {visiblePhones.map((phone, objectId) => (
-            <div
-              key={objectId}
-              className={`${styles.card} ${
-                selectedPhone === phone ? styles.selected : ""
-              }`}
-              onClick={() => handleItemClick(phone)}
-            >
-              <div className={styles.image}>
-                <img
-                  alt="Eroare server"
-                  className={styles.img}
-                  src={phone.device_image}
-                />
-              </div>
-              <div className={styles.small_card}>
-                <p className={styles.brand}>{phone.device_name}</p>
-                <p className={styles.os}>{phone.operatingSystem}</p>
-                <p>Click pentru detalii</p>
+        {filter && (
+          <>
+            <div className={styles.filterbox}>
+              <p>Test</p>
+              <div className={styles.filters}>
+                <p>content</p>
               </div>
             </div>
+          </>
+        )}
+        <div className={styles.box}>
+          {visiblePhones.map((phone) => (
+            <>
+              <div
+                key={phone.id}
+                className={`${styles.card} ${
+                  selectedPhone === phone ? styles.selected : ""
+                }`}
+                onClick={() => handleItemClick(phone)}
+              >
+                <div className={styles.image}>
+                  <img
+                    alt="Eroare server"
+                    className={styles.img}
+                    src={phone.device_image}
+                  />
+                </div>
+                <div className={styles.small_card}>
+                  <p className={styles.brand}>{phone.device_name}</p>
+                </div>
+              </div>
+            </>
           ))}
         </div>
       </div>

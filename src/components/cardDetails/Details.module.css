@@ -194,28 +194,35 @@ input[type="radio"] {
   margin: 0 auto;
 }
 
-.details p {
+.details div {
   display: flex;
+  flex-direction: row;
+
   justify-content: space-between;
   background-color: white;
   width: 90%;
   padding: 6px;
   border: 1px solid blue;
+  margin-top: 40px;
 }
 
 .down {
+  display: block;
+  position: relative;
   color: red;
-  margin: auto 0;
+  margin-right: 0;
 }
 
 @media (min-width: 0px) and (max-width: 480px) {
   .productDetails {
     margin-top: 80px;
+    width: auto;
   }
 }
 
 @media (min-width: 481px) and (max-width: 1024px) {
   .productDetails {
     margin-top: 80px;
+    width: auto;
   }
 }

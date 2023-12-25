@@ -20,7 +20,7 @@ function Details({ phones }) {
     adresa: "",
     telefon: "",
   });
-  const [detailed, setIsDetailed] = useState(true);
+  const [detailed, setIsDetailed] = useState(false);
 
   useEffect(() => {
     const telefonGasit = phones.find(
@@ -130,6 +130,14 @@ function Details({ phones }) {
     },
     { label: "Aparitie:", value: telefonSelectat?.release || "N/A" },
     { label: "Chipset:", value: telefonSelectat?.cpu || "N/A" },
+    {
+      label: "Storage capacity",
+      value: telefonSelectat?.storageCapacity || [],
+    },
+    {
+      label: "Pret:",
+      value: telefonSelectat?.prices || "Select storage capacity",
+    },
   ];
 
   if (!telefonSelectat) {
@@ -153,14 +161,25 @@ function Details({ phones }) {
             />
           </div>
           <div className={styles.specificationsContainer}>
-            {specificatiiProdus.map((specificatie, index) => (
+            {specificatiiProdus.map((spec, index) => (
               <div key={index} className={styles.specificationItem}>
-                <span className={styles.specificationLabel}>
-                  {specificatie.label}
-                </span>
-                <span className={styles.specificationValue}>
-                  {specificatie.value}
-                </span>
+                <span className={styles.specificationLabel}>{spec.label}</span>
+                {spec.label === "Storage capacity" ? (
+                  <div className={styles.storageButtons}>
+                    {spec.value.map((storageOption, storageIndex) => (
+                      <button
+                        key={storageIndex}
+                        onClick={() => handleStorageClick(storageOption)}
+                      >
+                        {storageOption}
+                      </button>
+                    ))}
+                  </div>
+                ) : (
+                  <span className={styles.specificationValue}>
+                    {spec.value}
+                  </span>
+                )}
               </div>
             ))}
           </div>
@@ -323,95 +342,99 @@ function Details({ phones }) {
           <hr></hr> */}
             {detailed ? (
               <>
-                <p>
+                <div>
                   Body
-                  <BiIcons.BiSolidDownArrow
+                  <BiIcons.BiSolidUpArrow
                     className={styles.down}
                     onClick={() => setIsDetailed(!details)}
-                  ></BiIcons.BiSolidDownArrow>
-                </p>
-                <p>
+                  ></BiIcons.BiSolidUpArrow>
+                </div>
+                <p>is working</p>
+                <div>
                   Display
-                  <BiIcons.BiSolidDownArrow
+                  <BiIcons.BiSolidUpArrow
                     className={styles.down}
-                  ></BiIcons.BiSolidDownArrow>
-                </p>
-                <p>
+                    onClick={() => setIsDetailed(!details)}
+                  ></BiIcons.BiSolidUpArrow>
+                </div>
+                <p>is working</p>
+                <div>
                   OS
-                  <BiIcons.BiSolidDownArrow
+                  <BiIcons.BiSolidUpArrow
                     className={styles.down}
-                  ></BiIcons.BiSolidDownArrow>
-                </p>
-                <p>
+                  ></BiIcons.BiSolidUpArrow>
+                </div>
+                <div>
                   Storage and RAM{" "}
-                  <BiIcons.BiSolidDownArrow
+                  <BiIcons.BiSolidUpArrow
                     className={styles.down}
-                  ></BiIcons.BiSolidDownArrow>
-                </p>
-                <p>
+                  ></BiIcons.BiSolidUpArrow>
+                </div>
+                <div>
                   Back cameras{" "}
-                  <BiIcons.BiSolidDownArrow
+                  <BiIcons.BiSolidUpArrow
                     className={styles.down}
-                  ></BiIcons.BiSolidDownArrow>
-                </p>
-                <p>
+                  ></BiIcons.BiSolidUpArrow>
+                </div>
+                <div>
                   Front cameras{" "}
-                  <BiIcons.BiSolidDownArrow
+                  <BiIcons.BiSolidUpArrow
                     className={styles.down}
-                  ></BiIcons.BiSolidDownArrow>
-                </p>
-                <p>
+                  ></BiIcons.BiSolidUpArrow>
+                </div>
+                <div>
                   Battery{" "}
-                  <BiIcons.BiSolidDownArrow
+                  <BiIcons.BiSolidUpArrow
                     className={styles.down}
-                  ></BiIcons.BiSolidDownArrow>
-                </p>
+                  ></BiIcons.BiSolidUpArrow>
+                </div>
               </>
             ) : (
               <>
-                <p>
+                <div>
                   Body
-                  <BiIcons.BiSolidUpArrow
+                  <BiIcons.BiSolidDownArrow
                     className={styles.down}
                     onClick={() => setIsDetailed(true)}
-                  ></BiIcons.BiSolidUpArrow>
-                </p>
-                <p>
+                  ></BiIcons.BiSolidDownArrow>
+                </div>
+                <div>
                   Display
-                  <BiIcons.BiSolidUpArrow
+                  <BiIcons.BiSolidDownArrow
                     className={styles.down}
-                  ></BiIcons.BiSolidUpArrow>
-                </p>
-                <p>
+                    onClick={() => setIsDetailed(true)}
+                  ></BiIcons.BiSolidDownArrow>
+                </div>
+                <div>
                   OS
-                  <BiIcons.BiSolidUpArrow
+                  <BiIcons.BiSolidDownArrow
                     className={styles.down}
-                  ></BiIcons.BiSolidUpArrow>
-                </p>
-                <p>
+                  ></BiIcons.BiSolidDownArrow>
+                </div>
+                <div>
                   Storage and RAM{" "}
-                  <BiIcons.BiSolidUpArrow
+                  <BiIcons.BiSolidDownArrow
                     className={styles.down}
-                  ></BiIcons.BiSolidUpArrow>
-                </p>
-                <p>
+                  ></BiIcons.BiSolidDownArrow>
+                </div>
+                <div>
                   Back cameras{" "}
-                  <BiIcons.BiSolidUpArrow
+                  <BiIcons.BiSolidDownArrow
                     className={styles.down}
-                  ></BiIcons.BiSolidUpArrow>
-                </p>
-                <p>
+                  ></BiIcons.BiSolidDownArrow>
+                </div>
+                <div>
                   Front cameras{" "}
-                  <BiIcons.BiSolidUpArrow
+                  <BiIcons.BiSolidDownArrow
                     className={styles.down}
-                  ></BiIcons.BiSolidUpArrow>
-                </p>
-                <p>
+                  ></BiIcons.BiSolidDownArrow>
+                </div>
+                <div>
                   Battery{" "}
-                  <BiIcons.BiSolidUpArrow
+                  <BiIcons.BiSolidDownArrow
                     className={styles.down}
-                  ></BiIcons.BiSolidUpArrow>
-                </p>
+                  ></BiIcons.BiSolidDownArrow>
+                </div>
               </>
             )}
           </div>

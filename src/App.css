@@ -1,5 +1,6 @@
 .App {
-  background-image: url("./cloud.jpg");
+  /* background-image: url("./cloud.jpg"); */
+  background-color: rgb(43, 40, 40);
 }
 
 body {

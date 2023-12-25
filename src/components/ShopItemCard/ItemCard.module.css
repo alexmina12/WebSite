@@ -55,7 +55,7 @@
   margin-top: 0;
 }
 
-.products .search .src {
+.src {
   padding: 10px;
   border: none;
   border-radius: 5px;
@@ -84,39 +84,54 @@
   margin: 4px auto;
 }
 
-.products .box {
+.box {
+  background-color: rgb(34, 32, 32);
   width: 96%;
   max-width: 1200px;
   margin-top: 20px;
+  padding-bottom: 30px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(4, minmax(210px, 1fr));
   /* grid-template-columns: repeat(5, 1fr); */
-  gap: 40px;
+  row-gap: 20px;
   align-items: flex-start;
   justify-items: center;
+  border-radius: 30px;
 }
 
-.products .box .card {
-  width: 100%;
+.card {
+  width: 75%;
   max-width: 300px;
-  height: 350px;
+  height: 420px;
   box-shadow: 0 0 8px rgb(20, 255, 236);
-  border-radius: 50px;
+  border-radius: 30px;
   text-align: center;
   padding: 0;
   transition: 0.3s;
   overflow: hidden;
   border: 2px solid #14ffec;
   cursor: pointer;
+  margin-top: 10%;
 }
 
-.products .box .card:hover {
+.card:hover {
   transform: scale(1.1);
   position: relative;
   z-index: 1;
 }
 
-.products .box .card .image {
+.card:hover + .card {
+  transform: scale(0.9);
+  transition: 0.3s;
+  z-index: 0;
+}
+
+.card:hover + .card:nth-child(n + 6),
+.card:hover + .card:nth-last-child(n + 6) {
+  transform: scale(1);
+}
+
+/* .products .box .card .image {
   width: 100%;
   height: 60%;
   display: flex;
@@ -124,39 +139,32 @@
   justify-content: center;
   overflow: hidden;
   transform: scale(0.85);
-}
+} */
 
-.products .box .card .image {
+.image {
   width: 100%;
-  height: auto;
   object-fit: cover;
   transition: 0.3s;
   transform-origin: center center;
+  height: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(236, 228, 228);
 }
 
-.products .box .card .small_card {
+.small_card {
   height: 80%;
   padding-top: 15px;
   background: #0d7377;
   /* width: 80%; */
 }
 
-.products .box .card .small_card .brand,
-.products .box .card .small_card .os {
+.brand,
+.os {
   color: #14ffec;
   color: #14ffec;
   font-size: 14px;
-}
-
-.products .box .card:hover + .card {
-  transform: scale(0.9);
-  transition: 0.3s;
-  z-index: 0;
-}
-
-.products .box .card:hover + .card:nth-child(n + 6),
-.products .box .card:hover + .card:nth-last-child(n + 6) {
-  transform: scale(1);
 }
 
 .btn-show {
@@ -198,11 +206,11 @@
 }
 
 .img {
-  border-radius: 10px;
-  padding: 8px 100px 0 100px;
-  margin: auto;
-  background-color: transparent;
-  background-color: transparent;
+  width: max-content;
+  border-radius: 20px;
+  padding: 4px 15px;
+  /* background-color: transparent; */
+  background-color: white;
 }
 
 /* @media (max-width: 768px) {
@@ -217,18 +225,31 @@
   }
 } */
 
-@media (min-width: 481px) and (max-width: 1024px) {
-  .products .box {
-    display: flex;
+.filterbox {
+  background-color: gray;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+@media (min-width: 0px) and (max-width: 480px) {
+  .box {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, minmax(300px, 1000px));
     flex-direction: column;
     align-items: center;
   }
 
-  .products .box .card {
-    width: 80vw;
-    max-width: 1000px;
+  .card:first-child {
+    margin-top: 5%;
+  }
+
+  .card {
+    width: 90%;
+    max-width: 1500px;
     height: 20vw;
-    max-height: 926px;
     display: flex;
     border: none;
     /* transform: 0.3s; */
@@ -236,29 +257,31 @@
     border: 2px solid #14ffec;
     transition: none;
     border-radius: 0 30px 30px 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
-  .products .box .card:hover {
+  .card:hover {
     transform: scale(1.07);
     transition: 0.5s;
   }
 
   .img {
-    padding: 10px 90px 10px 10px;
-    margin-left: 20px;
-    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 0px;
     height: 80%;
+    margin: 0 20px;
   }
 
-  .products .box .card .image {
+  .image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: fit-content;
+    height: auto;
     display: flex;
     justify-content: flex-start;
-    background-color: #0d7377;
   }
 
   .logo {
@@ -269,18 +292,18 @@
     margin-bottom: 10px;
   }
 
-  .products .box .card .small_card {
+  .small_card {
     width: 100%;
     height: auto;
   }
 }
 
-@media (min-width: 0px) and (max-width: 480px) {
+@media (min-width: 481px) and (max-width: 1024px) {
   .products {
     margin: 0;
   }
 
-  .products .box {
+  .box {
     grid-template-columns: repeat(2, minmax(100px, 1fr));
     margin: 0 auto;
     gap: 15px;
