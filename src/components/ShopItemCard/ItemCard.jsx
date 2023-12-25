@@ -13,7 +13,7 @@ function Card() {
   const [showAll, setShowAll] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [filteredPhones, setFilteredPhones] = useState([]);
-  // const [selectedPhoneOs, setSelectedPhoneOs] = useState("");
+  const [selectedPhoneOs, setSelectedPhoneOs] = useState("");
   const [filter, setFilter] = useState(false);
 
   useEffect(() => {
@@ -119,6 +119,8 @@ function Card() {
                 </div>
                 <div className={styles.small_card}>
                   <p className={styles.brand}>{phone.device_name}</p>
+                  <p>{phone.prices}</p>
+                  {console.log(phone.prices)}
                 </div>
               </div>
             </>
